@@ -49,7 +49,7 @@ function Signupcomponent() {
         <input
           id="inputfullname"
           onChange={(e) => settele(e.target.value)}
-          type={"tel"}
+          type={"password"}
           placeholder={"password"}
         />
         <p id="CreateAccouninfo">
