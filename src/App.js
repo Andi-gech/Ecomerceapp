@@ -16,7 +16,7 @@ import Delivery from "./Delivary";
 import Signup from "./Signup";
 
 function App() {
-  const [baseUrl] = useState("http://andutii.pythonanywhere.com");
+  const [baseUrl] = useState("https://andutii.pythonanywhere.com");
 
   const { pathname } = useLocation();
   useEffect(() => {
