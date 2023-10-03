@@ -327,7 +327,7 @@ function Navbar() {
           <div className=" w-[150px] h-[50px]   flex flex-row items-center justify-center mx-2">
             <AiOutlineUser className=" text-blue-400  h-[25px] w-[25px] bg-white" />
             <p className=" font-bold  text-sm  ml-2  ">
-              {auth().username ? auth().username : "Sign In/Sign Up"}
+              {auth()?.username ? auth()?.username : "Sign In/Sign Up"}
             </p>
           </div>
 
