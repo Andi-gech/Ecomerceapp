@@ -21,14 +21,13 @@ root.render(
     >
       <QueryClientProvider contextSharing={true} client={queryClient}>
         <BrowserRouter>
-        
           {" "}
           <App />
         </BrowserRouter>
         <ReactQueryDevtools initialIsOpen={true} position={"bottom-right"} />
       </QueryClientProvider>
     </AuthProvider>
-    </>
+  </>
 );
 
 // If you want to start measuring performance in your app, pass a function

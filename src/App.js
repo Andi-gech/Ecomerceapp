@@ -14,44 +14,43 @@ import NewsPage from "./Newspage";
 import Baseurl from "./BaseUrl";
 import Delivery from "./Delivary";
 import Signup from "./Signup";
+import { Provider } from "react-redux";
+import store from "./Store";
 
 function App() {
-  const [baseUrl] = useState("https://andutii.pythonanywhere.com");
+  const [baseUrl] = useState("http://127.0.0.1:8000");
 
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-
   return (
-    <Baseurl.Provider value={baseUrl}>
-      <div className="FullPage">
-        <Navbar />
-        <Routes>
-          <Route
-            exact
-            path="/products/:SearchParameter"
-            element={<HomePage />}
-          />
-          <Route exact path="/" element={<Catagoryhomepage />} />
-          <Route exact path="/:productId" element={<Productpage />} />
+    <Provider store={store}>
+      <Baseurl.Provider value={baseUrl}>
+        <div className=" flex  min-h-screen   flex-col  ">
+          <Navbar />
+          <Routes>
+            <Route exact path="/catagories/:id" element={<HomePage />} />
+            <Route exact path="/" element={<Catagoryhomepage />} />
+            <Route exact path="/:productId" element={<Productpage />} />
 
-          <Route
-            exact
-            path="/products/:SearchParameter/:productId"
-            element={<Productpage />}
-          />
-          <Route exact path="/:productId" element={<Productpage />} />
-          <Route exact path="/Order" element={<OrderPAge />} />
-          <Route exact path="/news" element={<NewsPage />} />
-          <Route exact path="/orders" element={<Orderlistpage />} />
+            <Route
+              exact
+              path="/products/:SearchParameter/:productId"
+              element={<Productpage />}
+            />
+            <Route exact path="/:productId" element={<Productpage />} />
+            <Route exact path="/Order" element={<OrderPAge />} />
+            <Route exact path="/news" element={<NewsPage />} />
+            <Route exact path="/orders" element={<Orderlistpage />} />
 
-          <Route exact path="/delivery" element={<Delivery />} />
-          <Route exact path="/signup" element={<Signup />} />
-        </Routes>
-        <Footer />
-      </div>
-    </Baseurl.Provider>
+            <Route exact path="/delivery" element={<Delivery />} />
+            <Route exact path="/signup" element={<Signup />} />
+          </Routes>
+          <Footer />
+        </div>
+      </Baseurl.Provider>
+    </Provider>
   );
 }
 

@@ -5,172 +5,110 @@ import faq from "./assets/faq.svg";
 import bannerimage from "./assets/bannerimage3.png";
 
 import bannerimage2 from "./assets/bannerimage.png";
-import onlinepay from "./assets/payment.svg"
-import delivery from "./assets/delivery.svg"
-import { products } from "./ProductList"
+import onlinepay from "./assets/payment.svg";
+import delivery from "./assets/delivery.svg";
+import { products } from "./ProductList";
 import { useMediaQuery } from "react-responsive";
 import Skeleton from "react-loading-skeleton";
 
-import 'react-loading-skeleton/dist/skeleton.css'
+import "react-loading-skeleton/dist/skeleton.css";
 import InlineList from "./InlineList";
 import Banner from "./Banner";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import useproducthook from "./UseProduct";
+import BannerAds from "./BannerAds";
+import SlideShow from "./SlideShow";
+import CatagoryCardContainer from "./CatagoryCardContainer";
+import PageButton from "./PageButton";
+import CatagorycardSlideshow from "./CatagorycardSlideshow";
 
-
-function HomePage() {
-    const {SearchParameter } = useParams();
-    const [order, setOrder] = useState('asc');
-    const [rate, setrate] = useState('inc');
-    const [product, setproduct] = useState();
-    const location = useLocation();
-    const state = location.state;
-    const sample=[1,2,3,4,5,67,8,9,77,53,32]
-    const { data, isError, error, isLoading, refech } = useproducthook(state.id)
-    
-
-  
-    
+function HomePage({}) {
+  const { SearchParameter } = useParams();
+  const [order, setOrder] = useState("asc");
+  const [rate, setrate] = useState("inc");
+  const [product, setproduct] = useState();
+  const location = useLocation();
+  const { id } = useParams();
+  const sample = [1, 2, 3, 4, 5, 67, 8, 9, 77, 53, 32];
+  const { data, isError, error, isLoading, refech } = useproducthook(id);
 
   const sortByPrice = () => {
     const sortedItems = data.sort((a, b) => {
-      if (order === 'asc') {
+      if (order === "asc") {
         return a.price - b.price;
       } else {
         return b.price - a.price;
       }
     });
-  
 
-    setOrder(order === 'asc' ? 'desc' : 'asc');
+    setOrder(order === "asc" ? "desc" : "asc");
     setproduct(sortedItems);
   };
   const sortByReview = () => {
     const sortedItem = data.sort((a, b) => {
-      if (rate === 'inc') {
+      if (rate === "inc") {
         return a.rating - b.rating;
       } else {
         return b.rating - a.rating;
       }
     });
-  
 
-    setrate(rate === 'inc' ? 'dec' : 'inc');
+    setrate(rate === "inc" ? "dec" : "inc");
     setproduct(sortedItem);
   };
   useEffect(() => {
     setproduct(data);
   }, [data]);
 
-    
-    return (  <div className="HomePage">
-        {data&&<Banner/>}
-  
-{isLoading&&<Skeleton height={180}  />}
-<div className="ShopBody">
-{isLoading&&<div style={
-{marginTop:20}
-} ><Skeleton height={30} width={300}  /></div>}
-    {data&&<div className="Catagory-selector" style={{width:"100%",overflowX:"scroll"}}>
-        Sort by
-       
-        <div className="RoundButton">
-        <p onClick={sortByPrice}>Price</p>
+  return (
+    <div className=" mt-[60px] bg-white min-h-screen flex items-center flex-col">
+      <SlideShow />
+      <div className=" w-4/5 mt-[100px] h-[50px]  ">
+        <p className=" text-black text-2xl font-bold ">
+          Products For <span className=" text-blue-500">You</span>
+        </p>
+      </div>
+      <div className=" w-4/5 flex items-center min-h-[200px] justify-center ">
+        {false && (
+          <p className="text-black font-bold w-1/2 text-center">
+            Sorry there is no product found in this catagory may be you can it
+            check back later!!
+          </p>
+        )}
+        <div className=" w-full flex flex-row overflow-hidden flex-wrap">
+          {data?.map((item) => {
+            const image = `http://127.0.0.1:8000${item.images}`;
+            return (
+              <div className=" w-[200px] h-[250px] mt-3 p-1  shrink-0 mx-3 ">
+                <CatagoryCardContainer
+                  name={item.name}
+                  price={item.price}
+                  images={image}
+                />
+              </div>
+            );
+          })}
         </div>
-        <div className="RoundButton">
-        <p onClick={sortByReview}>Rate</p>
-        </div>
-        <div className="RoundButton">
-        <p>name</p>
-        </div>
-        
-        
-       <div  className="RoundButton"><p>All</p></div>
-        
-
-    </div>}
-    <div className="Nameofthelist">
-    {isLoading&&<div style={
-{marginTop:20}
-} ><Skeleton height={35} width={300}  /></div>}
-{data&&  <p>{SearchParameter} Products For You!</p>}
-      
+      </div>
+      <div className=" w-4/5 mt-[50px] flex flex-row h-14 items-center ">
+        <PageButton number={1} />
+        <PageButton number={2} />
+        <PageButton number={3} />
+        <PageButton number={4} />
+        <PageButton number={5} />
+      </div>
+      <div className=" w-4/5 mt-[100px] h-[50px]  ">
+        <p className=" text-black text-2xl font-bold ">
+          Similar <span className=" text-blue-500">Products</span>
+        </p>
+      </div>
+      <div className=" w-4/5">
+        <CatagorycardSlideshow data={data} />
+      </div>
     </div>
-    <div className="Product-cards">
-        <div className="inline-cards">
-            {product?.map((product,index)=>
-            
-                  <Productcard key={index}  discount={product.discount} name={product.name} Description={product.description} rate={product.rating} price={product.price} id={product.id} image={product.images}/>
-            )}
-            {sample.map((pp,index)=>
-            <div key={index}>
-            {isLoading&&<div style={
-              {marginLeft:20,marginTop:10}
-              } ><Skeleton  height={300}
-              width={270}  /></div>}</div>)}
-            
-      
-       
-     
-        </div>
-        {isLoading&&<div style={
-{marginTop:20}
-} ><Skeleton height={35}  /></div>}
-        {data&&<div className="Pageno"> <div className="pagenoButton">
-        
-            <ButtonsTransparent height={100} width={10} name="1"/>
-            </div>
-            <div className="pagenoButton">
-        
-            <ButtonsTransparent height={100} width={10} name="2"/>
-            </div>
-            <div className="pagenoButton">
-        
-            <ButtonsTransparent height={100} width={10} name="3"/>
-            </div>
-            <div className="pagenoButton">
-        
-            <ButtonsTransparent height={100} width={10} name="4"/>
-            </div>
-            </div>}
-          <InlineList isLoading={isLoading} name={"Weekly Popular Products"}/>
-          {isLoading&&<div style={
-{marginTop:20}
-} ><Skeleton height={35}  /></div>}
-        {data&&<div className="Services-list-name"><p>Services Details</p></div>}
-        <div className="Serviece-Card-list">
-        {isLoading&&<div style={
-{marginTop:20 ,marginLeft:10}
-} ><Skeleton height={300} width={400} /></div>}
-{isLoading&&<div style={
-{marginTop:20 ,marginLeft:10}
-} ><Skeleton height={300} width={380}  /></div>}
-{isLoading&&<div style={
-{marginTop:20 ,marginLeft:10}
-} ><Skeleton height={300} width={380}  /></div>}
-          {data&&<>
-            <ServiceCard name="Frequently Asked Questions" productpic={faq} describtion={"Updates on safe Shopping in our store" }/>
-            <ServiceCard name={"Online Payment  Methodes"} productpic={onlinepay} describtion={"How to pay with TeleBirr?"}/>
-            <ServiceCard name={"Home Delivery Available Options "} productpic={delivery} describtion={"what are the options for delivery"}/>
-            </>}
-        </div>
-       {isError &&<div style={{ display:'flex',alignItems:"center",justifyContent:"center",height: '500px', width: '100%' }}>
-     Page is not ready
-          </div>}
-    </div>
-    </div>      
-    </div>);
-    
-  
-        
-     
-
-    
-   
-    
-    
+  );
 }
 
 export default HomePage;

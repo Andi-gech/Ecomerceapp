@@ -1,7 +1,14 @@
-function SizeComponent({size, onclick,active}) {
-    return ( <div className="Sizecomponent"  style={{border: active?'2px solid green':"none"}} onClick={onclick}>
-        {size}
-    </div> );
+function SizeComponent({ size, onclick, active }) {
+  return (
+    <div
+      className={` w-[40px] h-[40px] mx-3    flex items-center justify-center  rounded-md bg-white  ${
+        active ? "border-2" : "border-0"
+      } border-blue-400`}
+      onClick={onclick}
+    >
+      {size}
+    </div>
+  );
 }
 
 export default SizeComponent;
