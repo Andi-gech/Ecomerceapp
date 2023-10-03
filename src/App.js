@@ -18,7 +18,7 @@ import { Provider } from "react-redux";
 import store from "./Store";
 
 function App() {
-  const [baseUrl] = useState("http://127.0.0.1:8000");
+  const [baseUrl] = useState("https://andutii.pythonanywhere.com");
 
   const { pathname } = useLocation();
   useEffect(() => {
