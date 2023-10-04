@@ -307,14 +307,18 @@ function Navbar() {
     //   </div>
     // </>4
 
-    <div className="  h-[60px] fixed  z-40 w-full flex p-2 bg-white">
+    <div className="  z-50 h-[60px] fixed   w-full flex p-2 bg-white">
       <div className=" flex-1   justify-between flex flex-row items-center">
-        <div className=" w-1/4 flex flex-row items-center ">
+        <div className="  w-1/4 flex flex-row items-center ">
           <div className=" h-[33px] w-[33px] flex items-center rounded-md justify-center shadow-sm shadow-zinc-400">
             <img src={Logo} className=" h-[26px] w-[26px] " />
           </div>
 
-          <img src={logosvg} className=" h-[33px]" />
+          <img
+            onClick={() => navigate("")}
+            src={logosvg}
+            className="hover:brightness-50 transition-opacity duration-300 ease-in-out cursor-pointer h-[33px]"
+          />
         </div>
         <div className=" w-3/4 h-full  flex flex-row justify-end items-center">
           <div className=" w-[350px] h-[40px]  items-center  flex flex-row justify-end mx-2">
@@ -324,7 +328,10 @@ function Navbar() {
               background={"bg-zinc-100"}
             />
           </div>
-          <div className=" w-[150px] h-[50px]   flex flex-row items-center justify-center mx-2">
+          <div
+            onClick={handlebuyclick}
+            className=" w-[150px] cursor-pointer h-[50px]   flex flex-row items-center justify-center mx-2"
+          >
             <AiOutlineUser className=" text-blue-400  h-[25px] w-[25px] bg-white" />
             <p className=" font-bold  text-sm  ml-2  ">
               {auth()?.username ? auth()?.username : "Sign In/Sign Up"}

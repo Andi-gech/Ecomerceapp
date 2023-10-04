@@ -26,6 +26,7 @@ import { FaCommentDots, FaDotCircle } from "react-icons/fa";
 import { BsDot } from "react-icons/bs";
 import SlideShow from "./SlideShow";
 import CatagorycardSlideshow from "./CatagorycardSlideshow";
+import Signupcomponent from "./Signupbox";
 
 function Catagoryhomepage() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
