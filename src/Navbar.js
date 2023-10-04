@@ -320,14 +320,17 @@ function Navbar() {
             className="hover:brightness-50 transition-opacity duration-300 ease-in-out cursor-pointer h-[33px]"
           />
         </div>
-        <div className=" w-3/4 h-full  flex flex-row justify-end items-center">
-          <div className=" w-[350px] h-[40px]  items-center  flex flex-row justify-end mx-2">
+        <div className="  w-3/4 h-full  flex flex-row justify-end items-center">
+          <div className=" relative w-[350px] h-[40px]  items-center  flex flex-row justify-end mx-2">
             <Input
               type={"search"}
               placeholder={"Search Products here"}
               background={"bg-zinc-100"}
+              ontextchange={(e) => setsearch(e.target.value)}
             />
+            {search && <Searchbox search={search} width={400} />}
           </div>
+
           <div
             onClick={handlebuyclick}
             className=" w-[150px] cursor-pointer h-[50px]   flex flex-row items-center justify-center mx-2"
