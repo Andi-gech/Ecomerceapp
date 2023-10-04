@@ -27,6 +27,8 @@ import { BsDot } from "react-icons/bs";
 import SlideShow from "./SlideShow";
 import CatagorycardSlideshow from "./CatagorycardSlideshow";
 import Signupcomponent from "./Signupbox";
+import BrandSlideShow from "./BrandSlideShow";
+import CatagoryCircleLoading from "./CatagoryCircleLoading";
 
 function Catagoryhomepage() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
@@ -40,13 +42,13 @@ function Catagoryhomepage() {
   const [Subcatagory, setSubcatagory] = useState(null);
 
   const baseUrl = useContext(Baseurl);
-  const { data: NewProduct } = useNewProducthook();
+  const { data: NewProduct, isLoading: NewsLoading } = useNewProducthook();
 
   useEffect(() => {
     setproduct(NewProduct);
   }, [NewProduct]);
 
-  const { data } = useCatagoryhook();
+  const { data, isLoading: catagoryLoading } = useCatagoryhook();
   const { data: subcatagory } = UseSubcatagoryhook(selectedOption?.id);
 
   const changedata = () => {
@@ -76,100 +78,98 @@ function Catagoryhomepage() {
     value: id,
   }));
 
-  if (data && NewProduct) {
-    return (
-      <div className=" mt-[60px] bg-white min-h-screen flex items-center flex-col">
-        <div className=" h-[60px]  w-full justify-center flex-row flex items-center  border-t-2 border-b-2  border-zinc-100">
-          {data.map((item) => {
-            return (
-              <div
-                className="
+  return (
+    <div className=" mt-[60px] bg-white min-h-screen flex items-center flex-col">
+      <div className=" h-[60px]  w-full justify-center flex-row flex items-center  border-t-2 border-b-2  border-zinc-100">
+        {data?.map((item) => {
+          return (
+            <div
+              className="
           h-[32px] w-fit m-2 "
-              >
-                <CatagoryBox name={item.name} active={true} />
-              </div>
-            );
-          })}
-        </div>
-
-        <SlideShow />
-
-        <div className=" mt-[120px]  w-9/12">
-          <div className=" w-full  h-[30px]  flex items-center  justify-between px-2">
-            <p className=" text-black  font-bold  w-fit  h-[30px]   flex  items-center justify-center border-b-4 border-blue-500">
-              Grab the best deal on
-              <span className=" text-blue-400  mx-2  text-lg">SmartPhones</span>
-            </p>
-            <p className=" text-black  font-semibold">view All</p>
-          </div>
-          <CatagorycardSlideshow data={NewProduct} />
-        </div>
-        <div className=" mt-[120px]  w-9/12">
-          <div className=" w-full  h-[30px]  flex items-center  justify-between px-2">
-            <p className=" text-black  font-bold  w-fit  h-[30px]   flex  items-center justify-center border-b-4 border-blue-500">
-              Shop From
-              <span className=" text-blue-400  mx-2  text-lg">
-                Top Catagories
-              </span>
-            </p>
-            <p className=" text-black  font-semibold">view All</p>
-          </div>
-          <div className=" w-full mt-9   flex flex-row  overflow-hidden">
-            {data.map((item) => {
-              return (
-                <div className=" w-[150px] h-[150px] mx-8">
-                  <CAtagoryCirclecard
-                    name={item.name}
-                    id={item.id}
-                    picture={item.images}
-                  />
-                </div>
-              );
-            })}
-          </div>
-        </div>
-        <div className=" mt-[120px]  w-9/12">
-          <div className=" w-full  h-[30px]  flex items-center  justify-between px-2">
-            <p className=" text-black  font-bold  w-fit  h-[30px]   flex  items-center justify-center border-b-4 border-blue-500">
-              Top
-              <span className=" text-blue-400  mx-2  text-lg">
-                Local Products
-              </span>
-            </p>
-            <p className=" text-black  font-semibold">view All</p>
-          </div>
-          <div className=" w-full mt-9  h-[150px]  flex flex-row">
-            <div className=" w-[250px]  h-full mx-8 ">
-              <BrandCard />
+            >
+              <CatagoryBox name={item.name} active={true} />
             </div>
-            <div className=" w-[250px]  h-full mx-8 ">
-              <BrandCard />
-            </div>
-            <div className=" w-[250px]  h-full mx-8 ">
-              <BrandCard />
-            </div>
-          </div>
-          <div className=" flex  flex-row  w-full mt-2 items-center justify-center">
-            <BsDot size={30} />
-            <BsDot size={30} />
-            <BsDot size={30} />
-            <BsDot size={30} />
-          </div>
-        </div>
+          );
+        })}
+      </div>
 
-        <div className=" mt-[120px]  w-9/12">
-          <div className=" w-full  h-[30px]  flex items-center  justify-between px-2">
-            <p className=" text-black  font-bold  w-fit  h-[30px]   flex  items-center justify-center border-b-4 border-blue-500">
-              Todays
-              <span className=" text-blue-400  mx-2  text-lg">
-                Best discount
-              </span>
-            </p>
-            <p className=" text-black  font-semibold">view All</p>
-          </div>
-          <CatagorycardSlideshow data={NewProduct} />
+      <SlideShow isloading={NewsLoading} />
+
+      <div className=" mt-[120px]  w-9/12">
+        <div className=" w-full  h-[30px]  flex items-center  justify-between px-2">
+          <p className=" text-black  font-bold  w-fit  h-[30px]   flex  items-center justify-center border-b-4 border-blue-500">
+            Grab the best deal on
+            <span className=" text-blue-400  mx-2  text-lg">SmartPhones</span>
+          </p>
+          <p className=" text-black  font-semibold">view All</p>
         </div>
-        {/* <div
+        <CatagorycardSlideshow isloading={NewsLoading} data={NewProduct} />
+      </div>
+      <div className=" mt-[120px]  w-9/12">
+        <div className=" w-full  h-[30px]  flex items-center  justify-between px-2">
+          <p className=" text-black  font-bold  w-fit  h-[30px]   flex  items-center justify-center border-b-4 border-blue-500">
+            Shop From
+            <span className=" text-blue-400  mx-2  text-lg">
+              Top Catagories
+            </span>
+          </p>
+          <p className=" text-black  font-semibold">view All</p>
+        </div>
+        <div className=" w-full mt-9  h-[150px]  flex flex-row  overflow-hidden">
+          {catagoryLoading ? (
+            <>
+              <CatagoryCircleLoading />
+              <CatagoryCircleLoading />
+              <CatagoryCircleLoading />
+              <CatagoryCircleLoading />
+            </>
+          ) : (
+            <>
+              {data?.map((item) => {
+                return (
+                  <div className=" w-[150px] h-[150px] mx-8">
+                    <CAtagoryCirclecard
+                      name={item.name}
+                      id={item.id}
+                      picture={item.images}
+                    />
+                  </div>
+                );
+              })}
+            </>
+          )}
+        </div>
+      </div>
+      <div className=" mt-[120px]  w-9/12">
+        <div className=" w-full  h-[30px]  flex items-center  justify-between px-2">
+          <p className=" text-black  font-bold  w-fit  h-[30px]   flex  items-center justify-center border-b-4 border-blue-500">
+            Top
+            <span className=" text-blue-400  mx-2  text-lg">
+              Local Products
+            </span>
+          </p>
+          <p className=" text-black  font-semibold">view All</p>
+        </div>
+        <BrandSlideShow isloading={catagoryLoading} />
+        <div className=" flex  flex-row  w-full mt-2 items-center justify-center">
+          <BsDot size={30} />
+          <BsDot size={30} />
+          <BsDot size={30} />
+          <BsDot size={30} />
+        </div>
+      </div>
+
+      <div className=" mt-[120px]  w-9/12">
+        <div className=" w-full  h-[30px]  flex items-center  justify-between px-2">
+          <p className=" text-black  font-bold  w-fit  h-[30px]   flex  items-center justify-center border-b-4 border-blue-500">
+            Todays
+            <span className=" text-blue-400  mx-2  text-lg">Best discount</span>
+          </p>
+          <p className=" text-black  font-semibold">view All</p>
+        </div>
+        <CatagorycardSlideshow isloading={NewsLoading} data={NewProduct} />
+      </div>
+      {/* <div
           className="Catagorybanner"
           style={{ flexWrap: !isTabletOrMobile ? "nowrap" : "wrap" }}
         >
@@ -286,9 +286,8 @@ function Catagoryhomepage() {
             {product?.length === 0 && <p>No Product With is Citeria</p>}
           </div>
         </div> */}
-      </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Catagoryhomepage;

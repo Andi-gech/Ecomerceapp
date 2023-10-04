@@ -23,6 +23,7 @@ import SlideShow from "./SlideShow";
 import CatagoryCardContainer from "./CatagoryCardContainer";
 import PageButton from "./PageButton";
 import CatagorycardSlideshow from "./CatagorycardSlideshow";
+import LoadingCard from "./LoadingCard";
 
 function HomePage({}) {
   const { SearchParameter } = useParams();
@@ -78,14 +79,26 @@ function HomePage({}) {
           </p>
         )}
         <div className=" w-full flex flex-row overflow-hidden flex-wrap">
+          {isLoading && (
+            <>
+              <div className=" w-[200px] h-[250px] mt-3 p-1  shrink-0 mx-3 ">
+                <LoadingCard />
+              </div>
+              <div className=" w-[200px] h-[250px] mt-3 p-1  shrink-0 mx-3 ">
+                <LoadingCard />
+              </div>
+              <div className=" w-[200px] h-[250px] mt-3 p-1  shrink-0 mx-3 ">
+                <LoadingCard />
+              </div>
+            </>
+          )}
           {data?.map((item) => {
-            const image = `http://127.0.0.1:8000${item.images}`;
             return (
               <div className=" w-[200px] h-[250px] mt-3 p-1  shrink-0 mx-3 ">
                 <CatagoryCardContainer
                   name={item.name}
                   price={item.price}
-                  images={image}
+                  images={item.images}
                 />
               </div>
             );
@@ -105,7 +118,7 @@ function HomePage({}) {
         </p>
       </div>
       <div className=" w-4/5">
-        <CatagorycardSlideshow data={data} />
+        <CatagorycardSlideshow isloading={isLoading} data={data} />
       </div>
     </div>
   );

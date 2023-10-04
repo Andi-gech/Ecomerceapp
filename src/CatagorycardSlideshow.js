@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import CatagoryCardContainer from "./CatagoryCardContainer";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import LoadingCard from "./LoadingCard";
 
-function CatagorycardSlideshow({ data }) {
+function CatagorycardSlideshow({ data, isloading }) {
   const [current, setcurrent] = useState(0);
   const clicknext = () => {
     const viewpage = (current + 1) % Math.ceil(data?.length / 5);
@@ -15,7 +16,16 @@ function CatagorycardSlideshow({ data }) {
       setcurrent(viewpage);
     }
   };
-  console.log(current);
+  if (isloading) {
+    return (
+      <div className=" w-[990px]  h-[220px]  flex flex-row mt-2 animate-pulse   overflow-hidden  ">
+        <LoadingCard />
+        <LoadingCard />
+        <LoadingCard />
+        <LoadingCard />
+      </div>
+    );
+  }
   return (
     <div className="mt-9 relative group flex items-center justify-center w-full  h-[220px]">
       <div
