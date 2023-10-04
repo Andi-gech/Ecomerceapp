@@ -1,4 +1,10 @@
-import { FaFacebook, FaGithub, FaInstagram, FaQq } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaGithub,
+  FaInstagram,
+  FaPhone,
+  FaQq,
+} from "react-icons/fa";
 
 function Footer() {
   return (
@@ -7,16 +13,16 @@ function Footer() {
         <p className=" font-extrabold text-3xl text-blue-500">Senay Tech </p>
         <p className=" font-bold text-xl">contact us </p>
         <div className=" flex flex-row mt-2">
-          <FaFacebook size={20} className=" mr-2" />
-          <p>0910987126</p>
+          <FaInstagram size={20} className=" mr-2" />
+          <p>@SenayTech</p>
         </div>
         <div className=" flex flex-row mt-2">
           <FaFacebook size={20} className=" mr-2" />
-          <p>0910987126</p>
+          <p>@SenayTech</p>
         </div>
         <div className=" flex flex-row mt-2">
-          <FaFacebook size={20} className=" mr-2" />
-          <p>0910987126</p>
+          <FaPhone size={20} className=" mr-2" />
+          <p>09*******</p>
         </div>
       </div>
       <div className=" h-full w-3/5 flex  items-center justify-center flex-row ">
