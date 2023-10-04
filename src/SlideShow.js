@@ -33,9 +33,8 @@ export default function SlideShow() {
       </div>
       <div className="relative h-[250px] rounded-2xl w-full flex flex-row mt-3 overflow-hidden">
         <div
-          className={`relative h-full w-full flex flex-row duration-1000 transform -translate-x-[${
-            current * 100
-          }%]`}
+          style={{ "--tw-translate-x": `-${current * 100}%` }}
+          className={`relative h-full w-full flex flex-row duration-1000 transform `}
         >
           <div className="h-[250px] w-full shrink-0">
             <BannerAds content={"Content 1"} />
