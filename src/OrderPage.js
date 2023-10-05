@@ -313,12 +313,12 @@ function OrderPAge() {
         </div>
         <h1 className="dark:text-white text-3xl font-bold">Check Out Here</h1>
       </div>
-      <div className=" h-[500px]  items-center justify-center w-full flex sm:flex-row flex-col ">
-        <div className=" w-[500px] h-full  flex-col  flex ">
+      <div className="  items-center justify-center w-full flex sm:flex-row flex-col ">
+        <div className=" sm:w-[500px] w-full h-full  flex-col  flex ">
           <div className=" w-full h-[50px]flex flex-col items-center justify-center">
             <p className=" font-bold text-white   text-lg">Cart Items </p>
           </div>
-          <div className=" w-full h-[400px] flex flex-col items-center overflow-y-auto ">
+          <div className=" w-full h-[400px]  flex flex-col items-center overflow-y-auto ">
             {items.map((item) => {
               return (
                 <div className=" w-[400px] mt-2 h-[100px] items-center justify-center shadow-md dark:bg-zinc-800 bg-white flex flex-row shrink-0">
