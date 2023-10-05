@@ -302,7 +302,7 @@ function OrderPAge() {
     //   </div>
     // </>
 
-    <div className=" relative dark:bg-zinc-900  mt-[60px] bg-white min-h-screen flex items-center flex-col">
+    <div className=" relative w-full dark:bg-zinc-900  mt-[60px] bg-white min-h-screen flex items-center flex-col">
       {!isAuthenticated() && <Signupcomponent />}
       <div className=" relative w-full h-[60px] flex items-center justify-center border-b-2  dark:border-zinc-800 border-zinc-100 ">
         <div

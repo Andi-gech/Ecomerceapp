@@ -2,7 +2,7 @@ import React from "react";
 
 export default function LoadingCard() {
   return (
-    <div className="w-[180px] h-full dark:bg-zinc-800 bg-gray-200 flex flex-col rounded-xl overflow-hidden mx-3">
+    <div className="w-[180px] h-full shrink-0 dark:bg-zinc-800 bg-gray-200 flex flex-col rounded-xl overflow-hidden mx-3">
       <div className=" w-full h-1/2 dark:bg-zinc-700 bg-gray-300 flex items-center justify-center">
         <svg
           class="w-10 h-10 text-gray-200 dark:text-gray-600"

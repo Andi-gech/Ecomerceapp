@@ -80,7 +80,7 @@ function Catagoryhomepage() {
 
   return (
     <div className=" mt-[60px] bg-white  dark:bg-zinc-900 min-h-screen flex items-center flex-col">
-      <div className=" h-[60px]  w-full justify-center flex-row flex items-center  border-t-2 border-b-2  dark:border-zinc-800 border-zinc-100">
+      <div className=" h-[60px] sm:overflow-hidden  overflow-x-scroll w-full justify-center flex-row flex items-center  border-t-2 border-b-2  dark:border-zinc-800 border-zinc-100">
         {data?.map((item) => {
           return (
             <div
@@ -95,9 +95,9 @@ function Catagoryhomepage() {
 
       <SlideShow isloading={NewsLoading} />
 
-      <div className=" mt-[120px]  w-9/12">
+      <div className=" mt-[120px]  w-full sm:w-9/12">
         <div className=" w-full  h-[30px]  flex items-center  justify-between px-2">
-          <p className=" text-black dark:text-white font-bold  w-fit  h-[30px]   flex  items-center justify-center border-b-4 border-blue-500">
+          <p className=" text-black dark:text-white font-bold   w-fit  h-[30px]   flex  items-center justify-center border-b-4 border-blue-500">
             Grab the best deal on
             <span className=" text-blue-400  mx-2  text-lg">SmartPhones</span>
           </p>
@@ -105,7 +105,7 @@ function Catagoryhomepage() {
         </div>
         <CatagorycardSlideshow isloading={NewsLoading} data={NewProduct} />
       </div>
-      <div className=" mt-[120px]  w-9/12">
+      <div className=" mt-[120px]  w-full sm:w-9/12">
         <div className=" w-full  h-[30px]  flex items-center  justify-between px-2">
           <p className=" text-black dark:text-white font-bold  w-fit  h-[30px]   flex  items-center justify-center border-b-4 border-blue-500">
             Shop From
@@ -115,7 +115,7 @@ function Catagoryhomepage() {
           </p>
           <p className=" text-black dark:text-white  font-semibold">view All</p>
         </div>
-        <div className=" w-full mt-9  h-[150px]  flex flex-row  overflow-hidden">
+        <div className=" w-full mt-9  sm:overflow-hidden  h-[150px]  flex flex-row  overflow-x-auto ">
           {catagoryLoading ? (
             <>
               <CatagoryCircleLoading />
@@ -127,7 +127,7 @@ function Catagoryhomepage() {
             <>
               {data?.map((item) => {
                 return (
-                  <div className=" w-[150px] h-[150px] mx-8">
+                  <div className=" w-[150px] h-[150px] sm:mx-8">
                     <CAtagoryCirclecard
                       name={item.name}
                       id={item.id}
@@ -140,7 +140,7 @@ function Catagoryhomepage() {
           )}
         </div>
       </div>
-      <div className=" mt-[120px]  w-9/12">
+      <div className=" mt-[120px]  w-full sm:w-9/12">
         <div className=" w-full  h-[30px]  flex items-center  justify-between px-2">
           <p className=" text-black  dark:text-white font-bold  w-fit  h-[30px]   flex  items-center justify-center border-b-4 border-blue-500">
             Top
@@ -159,7 +159,7 @@ function Catagoryhomepage() {
         </div>
       </div>
 
-      <div className=" mt-[120px]  w-9/12">
+      <div className=" mt-[120px]  w-full sm:w-9/12">
         <div className=" w-full  h-[30px]  flex items-center  justify-between px-2">
           <p className=" text-black dark:text-white  font-bold  w-fit  h-[30px]   flex  items-center justify-center border-b-4 border-blue-500">
             Todays

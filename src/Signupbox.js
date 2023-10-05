@@ -70,7 +70,7 @@ function Signupcomponent() {
   };
   if (isloginpage) {
     return (
-      <div className=" fixed z-30 flex bg-zinc-800 dark:bg-opacity-50 items-center justify-center backdrop-blur-sm top-0 left-0 w-full h-full  bg-opacity-30">
+      <div className=" fixed   z-30 flex bg-zinc-800 dark:bg-opacity-50 items-center justify-center backdrop-blur-sm top-0 left-0 w-full h-full  bg-opacity-30">
         <div className=" h-[300px] rounded-md w-[400px] dark:bg-zinc-900 flex items-center justify-center bg-white">
           <div className=" w-11/12 h-full  items-center flex-col flex">
             <p className=" font-bold  dark:text-white text-xl  items-center flex justify-center">

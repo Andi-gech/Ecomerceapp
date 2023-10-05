@@ -2,7 +2,7 @@ import React from "react";
 
 function CatagoryCircleLoading(props) {
   return (
-    <div className=" h-full w-full    animate-pulse cursor-pointer   group  flex flex-col items-center justify-center    ">
+    <div className=" w-[150px] h-[150px]  shrink-0   animate-pulse cursor-pointer   group  flex flex-col items-center justify-center    ">
       <div className=" h-[100px]  dark:bg-zinc-800 bg-gray-300 w-[100px] group-hover:border-2 border-blue-400   rounded-full overflow-hidden  flex items-center justify-center  ">
         <svg
           class="w-10 h-10 text-gray-200 dark:text-gray-600"

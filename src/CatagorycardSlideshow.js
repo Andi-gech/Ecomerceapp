@@ -18,7 +18,7 @@ function CatagorycardSlideshow({ data, isloading }) {
   };
   if (isloading) {
     return (
-      <div className=" w-[990px]  h-[220px]  flex flex-row mt-2 animate-pulse   overflow-hidden  ">
+      <div className=" sm:w-[990px] w-full    h-[220px]  flex flex-row mt-2 animate-pulse  overflow-x-scroll  sm:overflow-hidden  ">
         <LoadingCard />
         <LoadingCard />
         <LoadingCard />
@@ -37,7 +37,7 @@ function CatagorycardSlideshow({ data, isloading }) {
     <div className="mt-9 relative group flex items-center justify-center w-full  h-[220px]">
       <div
         onClick={clickprev}
-        className={` flex  items-center ${
+        className={`  sm:flex hidden items-center ${
           current === 0 ? "bg-slate-400" : "active:bg-blue-200"
         }    z-30 justify-center cursor-pointer dark:bg-blue-200 dark:bg-opacity-20 dark:border-blue-400   transition-opacity opacity-0 group-hover:opacity-100 h-[60px] w-[60px]   bg-blue-100 rounded-full absolute border-4 border-white -left-[30px]`}
       >
@@ -45,14 +45,14 @@ function CatagorycardSlideshow({ data, isloading }) {
       </div>
       <div
         onClick={clicknext}
-        className=" h-[60px] w-[60px] flex z-30 dark:bg-blue-200 dark:bg-opacity-20 dark:border-blue-400  transition-opacity opacity-0 group-hover:opacity-100 cursor-pointer items-center justify-center  bg-blue-100  rounded-full absolute border-4 border-white -right-[30px]"
+        className=" h-[60px] w-[60px]  sm:flex hidden z-30 dark:bg-blue-200 dark:bg-opacity-20 dark:border-blue-400  transition-opacity opacity-0 group-hover:opacity-100 cursor-pointer items-center justify-center  bg-blue-100  rounded-full absolute border-4 border-white -right-[30px]"
       >
         <FaAngleRight size={10} className=" dark:text-white" />
       </div>
 
-      <div className=" w-[990px]  h-[220px]   overflow-hidden  ">
+      <div className=" w-[990px]  h-[220px]  overflow-x-auto  sm:overflow-hidden  ">
         <div
-          className={` w-full  h-[220px]  flex flex-row p-1  duration-1000 -translate-x-[${
+          className={` w-full  h-[220px]  flex flex-row p-1    duration-1000 -translate-x-[${
             current * 100
           }%]  `}
         >

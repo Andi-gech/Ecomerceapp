@@ -325,7 +325,7 @@ function Navbar() {
 
     <div className="  z-50 h-[60px] fixed   w-full flex p-2 bg-white dark:bg-zinc-800">
       <div className=" flex-1   justify-between flex flex-row items-center">
-        <div className="  w-1/4 flex flex-row items-center ">
+        <div className="  w-1/2  h-full flex flex-row items-center ">
           <div
             onClick={() => setlist(!listvisible)}
             className=" h-[33px] w-[33px] flex items-center rounded-md justify-center shadow-sm shadow-zinc-400 dark:shadow-zinc-600"
@@ -336,11 +336,11 @@ function Navbar() {
           <img
             onClick={() => navigate("")}
             src={logosvg}
-            className="hover:brightness-50 transition-opacity duration-300 ease-in-out cursor-pointer h-[33px]"
+            className="hover:brightness-50 transition-opacity duration-300 ease-in-out cursor-pointer w-3/4 sm:w-fit  h-[33px]"
           />
         </div>
-        <div className="  w-3/4 h-full  flex flex-row justify-end items-center">
-          <div className=" relative w-[350px] h-[40px]  items-center  flex flex-row justify-end mx-2">
+        <div className="   w-3/4 h-full  flex flex-row justify-end items-center">
+          <div className=" sm:flex hidden relative w-[350px] h-[40px]  items-center   flex-row justify-end mx-2">
             <Input
               type={"search"}
               placeholder={"Search Products here"}
