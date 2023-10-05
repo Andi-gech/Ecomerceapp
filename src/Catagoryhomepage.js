@@ -79,8 +79,8 @@ function Catagoryhomepage() {
   }));
 
   return (
-    <div className=" mt-[60px] bg-white min-h-screen flex items-center flex-col">
-      <div className=" h-[60px]  w-full justify-center flex-row flex items-center  border-t-2 border-b-2  border-zinc-100">
+    <div className=" mt-[60px] bg-white  dark:bg-zinc-900 min-h-screen flex items-center flex-col">
+      <div className=" h-[60px]  w-full justify-center flex-row flex items-center  border-t-2 border-b-2  dark:border-zinc-800 border-zinc-100">
         {data?.map((item) => {
           return (
             <div
@@ -97,23 +97,23 @@ function Catagoryhomepage() {
 
       <div className=" mt-[120px]  w-9/12">
         <div className=" w-full  h-[30px]  flex items-center  justify-between px-2">
-          <p className=" text-black  font-bold  w-fit  h-[30px]   flex  items-center justify-center border-b-4 border-blue-500">
+          <p className=" text-black dark:text-white font-bold  w-fit  h-[30px]   flex  items-center justify-center border-b-4 border-blue-500">
             Grab the best deal on
             <span className=" text-blue-400  mx-2  text-lg">SmartPhones</span>
           </p>
-          <p className=" text-black  font-semibold">view All</p>
+          <p className=" text-black dark:text-white font-semibold">view All</p>
         </div>
         <CatagorycardSlideshow isloading={NewsLoading} data={NewProduct} />
       </div>
       <div className=" mt-[120px]  w-9/12">
         <div className=" w-full  h-[30px]  flex items-center  justify-between px-2">
-          <p className=" text-black  font-bold  w-fit  h-[30px]   flex  items-center justify-center border-b-4 border-blue-500">
+          <p className=" text-black dark:text-white font-bold  w-fit  h-[30px]   flex  items-center justify-center border-b-4 border-blue-500">
             Shop From
             <span className=" text-blue-400  mx-2  text-lg">
               Top Catagories
             </span>
           </p>
-          <p className=" text-black  font-semibold">view All</p>
+          <p className=" text-black dark:text-white  font-semibold">view All</p>
         </div>
         <div className=" w-full mt-9  h-[150px]  flex flex-row  overflow-hidden">
           {catagoryLoading ? (
@@ -142,13 +142,13 @@ function Catagoryhomepage() {
       </div>
       <div className=" mt-[120px]  w-9/12">
         <div className=" w-full  h-[30px]  flex items-center  justify-between px-2">
-          <p className=" text-black  font-bold  w-fit  h-[30px]   flex  items-center justify-center border-b-4 border-blue-500">
+          <p className=" text-black  dark:text-white font-bold  w-fit  h-[30px]   flex  items-center justify-center border-b-4 border-blue-500">
             Top
             <span className=" text-blue-400  mx-2  text-lg">
               Local Products
             </span>
           </p>
-          <p className=" text-black  font-semibold">view All</p>
+          <p className=" text-black  dark:text-white font-semibold">view All</p>
         </div>
         <BrandSlideShow isloading={catagoryLoading} />
         <div className=" flex  flex-row  w-full mt-2 items-center justify-center">
@@ -161,131 +161,14 @@ function Catagoryhomepage() {
 
       <div className=" mt-[120px]  w-9/12">
         <div className=" w-full  h-[30px]  flex items-center  justify-between px-2">
-          <p className=" text-black  font-bold  w-fit  h-[30px]   flex  items-center justify-center border-b-4 border-blue-500">
+          <p className=" text-black dark:text-white  font-bold  w-fit  h-[30px]   flex  items-center justify-center border-b-4 border-blue-500">
             Todays
             <span className=" text-blue-400  mx-2  text-lg">Best discount</span>
           </p>
-          <p className=" text-black  font-semibold">view All</p>
+          <p className=" text-black dark:text-white  font-semibold">view All</p>
         </div>
         <CatagorycardSlideshow isloading={NewsLoading} data={NewProduct} />
       </div>
-      {/* <div
-          className="Catagorybanner"
-          style={{ flexWrap: !isTabletOrMobile ? "nowrap" : "wrap" }}
-        >
-          {!isTabletOrMobile && (
-            <>
-              <div className="catagorytext">
-                <p id="catagorytexts">Shop to our store </p>
-                <p id="catagorysmalltext">
-                  To Get <span style={{ color: "rgb(247, 63, 7)" }}>90% </span>
-                  Off
-                </p>
-
-                {!isAuthenticated() && (
-                  <Link to={"/signup"}>
-                    {" "}
-                    <button id="Signupbutton">Signup</button>
-                  </Link>
-                )}
-              </div>
-              <div className="catagoryimage">
-                <img src={ong} alt="catagory img" />
-              </div>
-            </>
-          )}
-          {isTabletOrMobile && (
-            <>
-              <div
-                style={{ backgroundImage: `url(${ongw})` }}
-                className="Catagorymobiletext"
-              >
-                <p style={{ margin: 0 }}>Shop to our store </p>
-                <p style={{ margin: 0 }}>
-                  To Get <span style={{ color: "rgb(247, 63, 7)" }}>90% </span>
-                  Off
-                </p>
-              </div>
-              <div className="catagoryButton">
-                {" "}
-                <Link to={"/signup"}>
-                  <button>Sign-up</button>
-                </Link>
-              </div>
-            </>
-          )}
-        </div>
-
-        <div className="Listtitle">
-          <div>
-            <p>Catagory</p>{" "}
-          </div>
-        </div>
-
-        <div className="Catagolies">
-          <div className="Catagorylist">
-            {data.map((catagory, index) => (
-              <Catagorycard
-                key={index}
-                id={catagory.id}
-                image={catagory.images}
-                name={catagory.name}
-              />
-            ))}
-          </div>
-        </div>
-        <div className="Listtitle">
-          <p>New Product</p>{" "}
-          <Select
-            onChange={setSelectedOption}
-            required
-            id="Select"
-            isClearable={false}
-            options={dataoption}
-            placeholder="Catagory"
-          />{" "}
-          {selectedOption && (
-            <Select
-              onChange={setSubcatagory}
-              required
-              id="Select"
-              isClearable={false}
-              options={Secdataoption}
-              classNamePrefix="custom-select-prefix"
-              placeholder="Subcatagory"
-            />
-          )}{" "}
-          <div className="Selection">
-            minPrice
-            <input
-              type={"number"}
-              onChange={(event) => setmin(event.target.value)}
-            />{" "}
-            maxPrice
-            <input
-              type={"number"}
-              onChange={(event) => setmax(event.target.value)}
-            />
-            <button onClick={changedata}>Filter</button>
-          </div>
-        </div>
-        <div className="Product-cards">
-          <div className="inline-cards">
-            {product?.map((product, index) => (
-              <Productcard
-                key={index}
-                discount={product.discount}
-                name={product.name}
-                Description={product.description}
-                rate={product.rating}
-                price={product.price}
-                id={product.id}
-                image={product.images}
-              />
-            ))}
-            {product?.length === 0 && <p>No Product With is Citeria</p>}
-          </div>
-        </div> */}
     </div>
   );
 }

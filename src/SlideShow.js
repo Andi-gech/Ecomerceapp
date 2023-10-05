@@ -16,14 +16,14 @@ export default function SlideShow({ isloading }) {
   };
   if (isloading) {
     return (
-      <div className="relative animate-pulse h-[250px] justify-between flex-row rounded-3xl w-9/12 flex items-center  bg-gray-200">
+      <div className="relative animate-pulse h-[250px] dark:bg-zinc-800 justify-between flex-row rounded-3xl w-9/12 flex items-center  bg-gray-200">
         <div className=" w-1/2 h-full flex items-center flex-col justify-center  rounded-md ">
-          <div className="w-[300px] bg-gray-300  rounded-2xl h-[20px] mt-3"></div>
-          <div className="w-[400px] bg-gray-300 h-[12px] rounded-full mt-3"></div>
-          <div className="w-[200px] bg-gray-300 h-[12px] rounded-full mt-3"></div>
+          <div className="w-[300px] dark:bg-zinc-700 bg-gray-300  rounded-2xl h-[20px] mt-3"></div>
+          <div className="w-[400px] dark:bg-zinc-700 bg-gray-300 h-[12px] rounded-full mt-3"></div>
+          <div className="w-[200px] dark:bg-zinc-700 bg-gray-300 h-[12px] rounded-full mt-3"></div>
         </div>
         <div className=" w-1/2 h-full flex items-center justify-center">
-          <div class="flex items-center justify-center  w-[230px]  h-[230px]  bg-gray-300 rounded ">
+          <div class="flex items-center justify-center  w-[230px]  h-[230px] dark:bg-zinc-700 bg-gray-300 rounded ">
             <svg
               class="w-10 h-10 text-gray-200 dark:text-gray-600"
               aria-hidden="true"
@@ -46,17 +46,17 @@ export default function SlideShow({ isloading }) {
         onClick={clickPrev}
         className={`flex items-center ${
           current === 0 ? "bg-slate-400" : "active:bg-blue-200"
-        } z-30 justify-center cursor-pointer h-[60px] w-[60px] bg-blue-100 rounded-full absolute border-4 border-white -left-[30px]`}
+        } z-30 justify-center dark:bg-blue-400  dark:border-zinc-900 cursor-pointer h-[60px] w-[60px] bg-blue-100 rounded-full absolute border-4 border-white -left-[30px]`}
       >
-        <FaAngleLeft size={10} />
+        <FaAngleLeft size={10} className=" dark:text-white" />
       </div>
       <div
         onClick={clickNext}
-        className="h-[60px] w-[60px] flex z-30 active:bg-blue-200 cursor-pointer items-center justify-center bg-blue-100 rounded-full absolute border-4 border-white -right-[30px]"
+        className="h-[60px] w-[60px] flex dark:bg-blue-400  dark:border-zinc-900 z-30 active:bg-blue-200 cursor-pointer items-center justify-center bg-blue-100 rounded-full absolute border-4 border-white -right-[30px]"
       >
-        <FaAngleRight size={10} />
+        <FaAngleRight size={10} className=" dark:text-white" />
       </div>
-      <div className="relative h-[250px] rounded-2xl w-full flex flex-row mt-3 overflow-hidden">
+      <div className="relative h-[250px]  rounded-2xl w-full flex flex-row mt-3 overflow-hidden">
         <div
           style={{ "--tw-translate-x": `-${current * 100}%` }}
           className={`relative h-full w-full flex flex-row duration-1000 transform `}

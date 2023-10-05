@@ -14,7 +14,7 @@ function Searchbox({ search, width, ismobile }) {
 
   return (
     <div
-      className=" bg-white absolute top-[50px] overflow-y-auto rounded-sm min-h-[200px] right-0   shadow-sm shadow-gray-600"
+      className=" bg-white dark:text-white dark:bg-zinc-800 absolute top-[50px] overflow-y-auto rounded-sm min-h-[200px] right-0   shadow-sm shadow-gray-600"
       style={{ width: width }}
     >
       <div className="SearchTitle">Search Result For "{search}"</div>

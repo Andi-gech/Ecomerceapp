@@ -70,27 +70,33 @@ function Signupcomponent() {
   };
   if (isloginpage) {
     return (
-      <div className=" fixed z-30 flex items-center justify-center backdrop-blur-sm top-0 left-0 w-full h-full bg-blue-400 bg-opacity-30">
-        <div className=" h-[300px] rounded-md w-[400px] flex items-center justify-center bg-white">
+      <div className=" fixed z-30 flex bg-zinc-800 dark:bg-opacity-50 items-center justify-center backdrop-blur-sm top-0 left-0 w-full h-full  bg-opacity-30">
+        <div className=" h-[300px] rounded-md w-[400px] dark:bg-zinc-900 flex items-center justify-center bg-white">
           <div className=" w-11/12 h-full  items-center flex-col flex">
-            <p className=" font-bold  text-xl  items-center flex justify-center">
+            <p className=" font-bold  dark:text-white text-xl  items-center flex justify-center">
               Login To Account
             </p>
 
             <div className=" flex my-2 flex-row items-center justify-center h-[40px] ">
-              <p className=" font-bold mx-2 w-[100px]">Username</p>
+              <p className=" font-bold dark:text-white mx-2 w-[100px]">
+                Username
+              </p>
               <div className=" w-[250px] h-full">
                 <Input
                   ontextchange={(e) => setname(e.target.value)}
-                  background={"bg-zinc-100"}
+                  background={"bg-zinc-100 dark:bg-zinc-700"}
+                  placeholder={"Username"}
                 />
               </div>
             </div>
             <div className=" flex my-2 flex-row items-center justify-center h-[40px] ">
-              <p className=" font-bold mx-2 w-[100px]">Password</p>
+              <p className=" font-bold mx-2 dark:text-white w-[100px]">
+                Password
+              </p>
               <div className=" w-[250px] h-full">
                 <Input
-                  background={"bg-zinc-100"}
+                  background={"bg-zinc-100 dark:bg-zinc-700"}
+                  placeholder={"Password"}
                   ontextchange={(e) => setpassword(e.target.value)}
                 />
               </div>
@@ -98,13 +104,13 @@ function Signupcomponent() {
             {error && (
               <p className=" text-sm font-bold  text-red-500"> {error} </p>
             )}
-            <p className=" w-full  flex flex-row">
+            {/* <p className=" w-full  flex flex-row">
               <FaInfoCircle color="gray" size={25} />
               <p className=" text-sm text-gray-700 font-bold">
                 Please Enter Your Real No B/c that is the only way we can Confim
                 your payment
               </p>
-            </p>
+            </p> */}
             <div className=" w-[200px] h-[50px] mt-2">
               <Button
                 onpress={submitLogin}
@@ -125,53 +131,66 @@ function Signupcomponent() {
     );
   } else {
     return (
-      <div className=" absolute z-30 flex items-center justify-center backdrop-blur-sm top-0 left-0 w-full h-full bg-blue-400 bg-opacity-30">
-        <div className=" h-[450px] rounded-md w-[400px] flex items-center justify-center bg-white">
+      <div className=" absolute z-30 flex items-center justify-center backdrop-blur-sm top-0 left-0 w-full h-full bg-zinc-800 bg-opacity-30">
+        <div className=" h-[450px] rounded-md w-[400px] flex items-center justify-center dark:bg-zinc-900 bg-white">
           <div className=" w-11/12 h-full  items-center flex-col flex">
-            <p className=" font-bold  text-xl  items-center flex justify-center">
+            <p className=" font-bold  dark:text-white  text-xl  items-center flex justify-center">
               Create Account{" "}
             </p>
             <div className=" flex my-2 flex-row items-center justify-center h-[40px] ">
-              <p className=" font-bold mx-2 w-[100px]">Firstname</p>
+              <p className=" font-bold dark:text-white mx-2 w-[100px]">
+                Firstname
+              </p>
               <div className=" w-[250px] h-full">
                 <Input
                   ontextchange={(e) => setFirstname(e.target.value)}
-                  background={"bg-zinc-100"}
+                  background={"bg-zinc-100 dark:bg-zinc-700"}
+                  placeholder={"Firstname"}
                 />
               </div>
             </div>
             <div className=" flex my-2 flex-row items-center justify-center h-[40px] ">
-              <p className=" font-bold mx-2 w-[100px]">Lastname</p>
+              <p className=" font-bold dark:text-white mx-2 w-[100px]">
+                Lastname
+              </p>
               <div className=" w-[250px] h-full">
                 <Input
                   ontextchange={(e) => setLastname(e.target.value)}
-                  background={"bg-zinc-100"}
+                  background={"bg-zinc-100 dark:bg-zinc-700 "}
+                  placeholder={"Lastname"}
                 />
               </div>
             </div>
             <div className=" flex my-2 flex-row items-center justify-center h-[40px] ">
-              <p className=" font-bold mx-2 w-[100px]">Email</p>
+              <p className=" font-bold dark:text-white mx-2 w-[100px]">Email</p>
               <div className=" w-[250px] h-full">
                 <Input
                   ontextchange={(e) => setemail(e.target.value)}
-                  background={"bg-zinc-100"}
+                  background={"bg-zinc-100 dark:bg-zinc-700"}
+                  placeholder={"Email"}
                 />
               </div>
             </div>
             <div className=" flex my-2 flex-row items-center justify-center h-[40px] ">
-              <p className=" font-bold mx-2 w-[100px]">Username</p>
+              <p className=" font-bold dark:text-white mx-2 w-[100px]">
+                Username
+              </p>
               <div className=" w-[250px] h-full">
                 <Input
                   ontextchange={(e) => setname(e.target.value)}
-                  background={"bg-zinc-100"}
+                  background={"bg-zinc-100 dark:bg-zinc-700"}
+                  placeholder={"Username"}
                 />
               </div>
             </div>
             <div className=" flex my-2 flex-row items-center justify-center h-[40px] ">
-              <p className=" font-bold mx-2 w-[100px]">Password</p>
+              <p className=" font-bold dark:text-white mx-2 w-[100px]">
+                Password
+              </p>
               <div className=" w-[250px] h-full">
                 <Input
-                  background={"bg-zinc-100"}
+                  background={"bg-zinc-100 dark:bg-zinc-700"}
+                  placeholder={"Password"}
                   ontextchange={(e) => setpassword(e.target.value)}
                 />
               </div>

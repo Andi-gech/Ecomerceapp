@@ -27,7 +27,7 @@ function App() {
   return (
     <Provider store={store}>
       <Baseurl.Provider value={baseUrl}>
-        <div className=" flex  min-h-screen   flex-col  ">
+        <div className=" non-selectable flex user-select-none  min-h-screen dark:bg-zinc-900  flex-col  ">
           <Navbar />
           <Routes>
             <Route exact path="/catagories/:id" element={<HomePage />} />

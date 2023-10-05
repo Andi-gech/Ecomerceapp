@@ -22,7 +22,7 @@ export default function Input({
         onChange={ontextchange}
         value={value}
         type="text"
-        className="w-full h-full  focus:outline-none  bg-transparent rounded-lg"
+        className="w-full h-full dark:text-white  focus:outline-none  bg-transparent rounded-lg"
       />
     </div>
   );

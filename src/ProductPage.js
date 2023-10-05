@@ -46,12 +46,23 @@ function Productpage() {
   };
 
   return (
-    <div className=" mt-[60px] bg-white min-h-screen flex items-center flex-col">
+    <div className=" mt-[60px] bg-white dark:bg-zinc-900 min-h-screen flex items-center flex-col">
       <div className=" h-[470px] mt-[50px] w-full flex flex-row">
         <div className=" w-1/2  flex-col h-full  flex items-center justify-center ">
           <div className=" w-2/3 h-2/3 rounded-md overflow-hidden">
             {isLoading ? (
-              <div className=" animate-pulse w-full h-full bg-gray-300 rounded-md overflow-hidden"></div>
+              <div className=" dark:bg-zinc-800 animate-pulse w-full items-center justify-center flex h-full bg-gray-300 rounded-md overflow-hidden">
+                <svg
+                  class="w-20 h-20 text-gray-200 dark:text-gray-600"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 16 20"
+                >
+                  <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
+                  <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+                </svg>
+              </div>
             ) : (
               <img
                 src={productpic}
@@ -63,7 +74,7 @@ function Productpage() {
           <div className=" h-[64px]  mt-[30px]  w-full flex flex-row items-center justify-center ">
             {isLoading ? (
               <>
-                <div className=" mx-2 items-center justify-center flex animate-pulse w-[64px] mx=3 h-[64px]  bg-gray-300 rounded-md overflow-hidden">
+                <div className=" mx-2 dark:bg-zinc-800 items-center justify-center flex animate-pulse w-[64px] mx=3 h-[64px]  bg-gray-300 rounded-md overflow-hidden">
                   <svg
                     class="w-8 h-8 text-gray-200 dark:text-gray-600"
                     aria-hidden="true"
@@ -75,7 +86,7 @@ function Productpage() {
                     <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
                   </svg>
                 </div>
-                <div className=" mx-2 items-center justify-center flex animate-pulse w-[64px] mx=3 h-[64px]  bg-gray-300 rounded-md overflow-hidden">
+                <div className=" mx-2 dark:bg-zinc-800 items-center justify-center flex animate-pulse w-[64px] mx=3 h-[64px]  bg-gray-300 rounded-md overflow-hidden">
                   <svg
                     class="w-8 h-8 text-gray-200 dark:text-gray-600"
                     aria-hidden="true"
@@ -87,7 +98,7 @@ function Productpage() {
                     <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
                   </svg>
                 </div>
-                <div className=" mx-2 items-center justify-center flex animate-pulse w-[64px] mx=3 h-[64px]  bg-gray-300 rounded-md overflow-hidden">
+                <div className=" mx-2 items-center justify-center flex animate-pulse w-[64px] mx=3 h-[64px] dark:bg-zinc-800 bg-gray-300 rounded-md overflow-hidden">
                   <svg
                     class="w-8 h-8 text-gray-200 dark:text-gray-600"
                     aria-hidden="true"
@@ -114,40 +125,40 @@ function Productpage() {
           <div className=" w-1/2 h-full flex flex-col justify-center items-center animate-pulse">
             <div className=" h-fit ">
               <div className=" w-full h-[30px]  items-center justify-center flex flex-col">
-                <h1 className=" font-bold h-[30px]  rounded-full  w-[300px] bg-gray-200 text-3xl"></h1>
+                <h1 className=" font-bold h-[30px]   rounded-full dark:bg-zinc-800 w-[300px] bg-gray-200 text-3xl"></h1>
               </div>
               <div className=" w-4/5 h-[50px]  items-center justify-center flex flex-col">
-                <h1 className=" font-bold h-[12px]  rounded-full  w-[400px] bg-gray-200 "></h1>
+                <h1 className=" font-bold h-[12px]  rounded-full dark:bg-zinc-800 w-[400px] bg-gray-200 "></h1>
               </div>
               <div className=" w-4/5 h-[12px]  items-center justify-center flex flex-col">
-                <h1 className=" font-bold h-[12px]  rounded-full  w-[300px] bg-gray-200 "></h1>
+                <h1 className=" font-bold h-[12px] dark:bg-zinc-800  rounded-full  w-[300px] bg-gray-200 "></h1>
               </div>
               <div className=" w-4/5 h-[32px]  items-center justify-center flex flex-col">
-                <h1 className=" font-bold h-[12px]  rounded-full  w-[100px] bg-gray-200 "></h1>
+                <h1 className=" font-bold h-[12px]  rounded-full dark:bg-zinc-800 w-[100px] bg-gray-200 "></h1>
               </div>
             </div>
             <div className=" h-[100px]  w-9/12 flex mt-5 flex-row justify-between  ">
-              <div className=" h-[50px] w-[200px] bg-gray-200 rounded-md"></div>
-              <div className=" h-[50px] w-[200px] bg-gray-200 rounded-md"></div>
+              <div className=" h-[50px] dark:bg-zinc-800 w-[200px] bg-gray-200 rounded-md"></div>
+              <div className=" h-[50px] dark:bg-zinc-800 w-[200px] bg-gray-200 rounded-md"></div>
             </div>
           </div>
         ) : (
           <div className=" w-1/2 h-full flex flex-col items-center">
             <div className=" w-full h-[100px]  items-center justify-center flex flex-col">
-              <h1 className=" font-bold text-3xl">
+              <h1 className=" dark:text-white font-bold text-3xl">
                 {" "}
                 This New Product (
                 <span className=" text-blue-500">200Birr</span>)
               </h1>
             </div>
             <div className=" w-4/5 h-[100px]  items-center justify-center flex flex-col">
-              <h1 className=" font-bold">
+              <h1 className=" dark:text-white font-bold">
                 lorem ipsumm lorem lorem ipsumm lorem lorem ipsumm lorem lorem
                 ipsumm lorem lorem ipsumm lorem lorem ipsumm lorem lorem ipsumm
               </h1>
             </div>
             <div className=" w-3/4 flex  ml-3 justify-self-start   items-center flex-row h-[50px]">
-              <p className="font-bold">Choose Color</p>
+              <p className="font-bold dark:text-white">Choose Color</p>
               <Colorcomponent
                 top={"red"}
                 bottom={"pink"}
@@ -182,7 +193,7 @@ function Productpage() {
               />
             </div>
             <div className=" w-3/4 flex  ml-3  mt-3 items-center justify-self-start   flex-row h-[50px] ">
-              <p className=" font-bold">Choose Size</p>
+              <p className="dark:text-white font-bold">Choose Size</p>
               <SizeComponent
                 size={"S"}
                 onclick={() => {
@@ -207,7 +218,7 @@ function Productpage() {
             </div>
             <div className="  ml-3 w-1/2 mt-3 h-[50px]  ">
               <div className="  flex items-center justify-center flex-row">
-                <p className="font-bold">Set Quantity</p>
+                <p className="dark:text-white font-bold">Set Quantity</p>
                 <Quantity oncurrent={currentfunction} />
                 <p className=" text-red-700 font-bold">#3 Item Left</p>
               </div>

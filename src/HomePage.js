@@ -64,16 +64,16 @@ function HomePage({}) {
   }, [data]);
 
   return (
-    <div className=" mt-[60px] bg-white min-h-screen flex items-center flex-col">
+    <div className=" mt-[60px] bg-white dark:bg-zinc-900 min-h-screen flex items-center flex-col">
       <SlideShow />
       <div className=" w-4/5 mt-[100px] h-[50px]  ">
-        <p className=" text-black text-2xl font-bold ">
+        <p className=" text-black dark:text-white text-2xl font-bold ">
           Products For <span className=" text-blue-500">You</span>
         </p>
       </div>
       <div className=" w-4/5 flex items-center min-h-[200px] justify-center ">
         {false && (
-          <p className="text-black font-bold w-1/2 text-center">
+          <p className="text-black dark:text-white font-bold w-1/2 text-center">
             Sorry there is no product found in this catagory may be you can it
             check back later!!
           </p>
@@ -105,7 +105,7 @@ function HomePage({}) {
           })}
         </div>
       </div>
-      <div className=" w-4/5 mt-[50px] flex flex-row h-14 items-center ">
+      <div className=" w-4/5 mt-[50px] flex  flex-row h-14 items-center ">
         <PageButton number={1} />
         <PageButton number={2} />
         <PageButton number={3} />
@@ -113,7 +113,7 @@ function HomePage({}) {
         <PageButton number={5} />
       </div>
       <div className=" w-4/5 mt-[100px] h-[50px]  ">
-        <p className=" text-black text-2xl font-bold ">
+        <p className=" text-black dark:text-white text-2xl font-bold ">
           Similar <span className=" text-blue-500">Products</span>
         </p>
       </div>

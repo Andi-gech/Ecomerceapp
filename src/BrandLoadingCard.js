@@ -2,7 +2,7 @@ import React from "react";
 
 export default function BrandLoadingCard() {
   return (
-    <div className=" w-full h-full items-center flex justify-center  bg-gray-200 animate-pulse  rounded-xl overflow-hidden">
+    <div className=" w-full h-full items-center flex justify-center dark:bg-zinc-800  bg-gray-200 animate-pulse  rounded-xl overflow-hidden">
       <svg
         class="w-10 h-10 text-gray-200 dark:text-gray-600"
         aria-hidden="true"

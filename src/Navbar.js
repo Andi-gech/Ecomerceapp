@@ -4,8 +4,10 @@ import {
   FaAngleDown,
   FaCartArrowDown,
   FaList,
+  FaMoon,
   FaRemoveFormat,
   FaSearch,
+  FaSun,
   FaTrash,
   FaTrashAlt,
   FaUser,
@@ -36,6 +38,9 @@ import Signupcomponent from "./Signupbox";
 import Input from "./Input";
 import CartCard from "./CartCard";
 import Button from "./Button";
+
+import useChangeMode from "./UseChangeMode";
+
 function Navbar() {
   const isAuthenticated = useIsAuthenticated();
   const [totalQuantity, setTotalQuantity] = useState(0);
@@ -49,6 +54,17 @@ function Navbar() {
   const [Signupcomponents, setSignupcompnent] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const toggle = () => setIsVisible(!isVisible);
+  // This is for fdark mode
+  const [colorTheme, setTheme] = useChangeMode();
+  const [darkSide, setDarkSide] = useState(
+    colorTheme === "light" ? true : false
+  );
+
+  const toggleDarkMode = (checked) => {
+    setTheme(colorTheme);
+    setDarkSide(checked);
+  };
+  // darkmode ends here
 
   useEffect(() => {
     calculateTotalQuantity();
@@ -307,10 +323,13 @@ function Navbar() {
     //   </div>
     // </>4
 
-    <div className="  z-50 h-[60px] fixed   w-full flex p-2 bg-white">
+    <div className="  z-50 h-[60px] fixed   w-full flex p-2 bg-white dark:bg-zinc-800">
       <div className=" flex-1   justify-between flex flex-row items-center">
         <div className="  w-1/4 flex flex-row items-center ">
-          <div className=" h-[33px] w-[33px] flex items-center rounded-md justify-center shadow-sm shadow-zinc-400">
+          <div
+            onClick={() => setlist(!listvisible)}
+            className=" h-[33px] w-[33px] flex items-center rounded-md justify-center shadow-sm shadow-zinc-400 dark:shadow-zinc-600"
+          >
             <img src={Logo} className=" h-[26px] w-[26px] " />
           </div>
 
@@ -325,7 +344,7 @@ function Navbar() {
             <Input
               type={"search"}
               placeholder={"Search Products here"}
-              background={"bg-zinc-100"}
+              background={"bg-zinc-100 dark:bg-zinc-700"}
               ontextchange={(e) => setsearch(e.target.value)}
             />
             {search && <Searchbox search={search} width={400} />}
@@ -335,8 +354,8 @@ function Navbar() {
             onClick={handlebuyclick}
             className=" w-[150px] cursor-pointer h-[50px]   flex flex-row items-center justify-center mx-2"
           >
-            <AiOutlineUser className=" text-blue-400  h-[25px] w-[25px] bg-white" />
-            <p className=" font-bold  text-sm  ml-2  ">
+            <AiOutlineUser className=" text-blue-400  h-[25px] w-[25px] " />
+            <p className=" font-bold  text-sm  ml-2  non-selectable text-black dark:text-white ">
               {auth()?.username ? auth()?.username : "Sign In/Sign Up"}
             </p>
           </div>
@@ -358,7 +377,7 @@ function Navbar() {
       <div
         className={`absolute ${
           isVisible ? " flex" : "hidden"
-        } w-[300px]  h-[200px] rounded-md  flex-col items-center bg-white shadow-sm shadow-slate-500 -bottom-[200px] right-0   ease-in-out duration-900`}
+        } w-[300px]  h-[200px] rounded-md  flex-col items-center dark:bg-zinc-800 bg-white shadow-sm shadow-slate-500 -bottom-[200px] right-0   ease-in-out duration-900`}
       >
         <div className=" w-full h-[160px]  overscroll-y-contain overflow-y-auto">
           {cartItems?.map((item) => {
@@ -385,6 +404,72 @@ function Navbar() {
           />
         </div>
       </div>
+      {listvisible && (
+        <div className=" absolute h-screen  top-[60px] w-screen  bg-black dark:bg-opacity-40  bg-opacity-40 backdrop-blur-sm mb-2 flex items-end ">
+          <div
+            className={`    w-[300px]   animate-width -translate-x-[0px] h-full dark:bg-zinc-800 bg-white `}
+          >
+            <div
+              onClick={() => toggleDarkMode(!darkSide)}
+              className=" w-[40px] h-[40px] rounded-full dark:bg-slate-700 bg-white  shadow-sm flex items-center justify-center shadow-gray-300"
+            >
+              {!darkSide ? (
+                <FaSun size={20} className="   text-orange-500" />
+              ) : (
+                <FaMoon size={20} className=" text-zinc-100" />
+              )}
+            </div>
+            <div
+              onClick={() => {
+                setlist(false);
+                navigate("");
+              }}
+              className=" w-full h-[50px]  shadow-sm dark:shadow-gray-700 shadow-gray-300 flex items-center mt-2 justify-center"
+            >
+              <p className=" non-selectable  text-black dark:text-white font-bold">
+                HomePage
+              </p>
+            </div>
+            <div
+              onClick={() => {
+                setlist(false);
+                navigate("/orders");
+              }}
+              className=" w-full h-[50px]  shadow-sm dark:shadow-gray-700 shadow-gray-300 flex items-center mt-2 justify-center"
+            >
+              <p className="  non-selectable text-black dark:text-white font-bold">
+                Orders
+              </p>
+            </div>
+            <div
+              onClick={() => {
+                setlist(false);
+                navigate("/news");
+              }}
+              className=" w-full h-[50px]  shadow-sm dark:shadow-gray-700 shadow-gray-300 flex items-center mt-2 justify-center"
+            >
+              <p className="  non-selectable text-black dark:text-white font-bold">
+                Senay Updates
+              </p>
+            </div>
+            <div
+              onClick={() => {
+                setlist(false);
+                navigate("/delivery");
+              }}
+              className=" w-full h-[50px]  shadow-sm dark:shadow-gray-700 shadow-gray-300 flex items-center mt-2 justify-center"
+            >
+              <p className="  non-selectable text-black dark:text-white font-bold">
+                Delivery
+              </p>
+            </div>
+          </div>
+          <div
+            onClick={() => setlist(false)}
+            className="  w-full h-full flex flex-1"
+          ></div>
+        </div>
+      )}
     </div>
   );
 }

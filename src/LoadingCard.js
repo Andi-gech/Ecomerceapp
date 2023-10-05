@@ -2,8 +2,8 @@ import React from "react";
 
 export default function LoadingCard() {
   return (
-    <div className="w-[180px] h-full bg-gray-200 flex flex-col rounded-xl overflow-hidden mx-3">
-      <div className=" w-full h-1/2 bg-gray-300 flex items-center justify-center">
+    <div className="w-[180px] h-full dark:bg-zinc-800 bg-gray-200 flex flex-col rounded-xl overflow-hidden mx-3">
+      <div className=" w-full h-1/2 dark:bg-zinc-700 bg-gray-300 flex items-center justify-center">
         <svg
           class="w-10 h-10 text-gray-200 dark:text-gray-600"
           aria-hidden="true"
@@ -15,10 +15,10 @@ export default function LoadingCard() {
           <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
         </svg>
       </div>
-      <div className=" w-full h-1/2 bg-gray-200 p-2">
-        <div className="w-4/5 bg-gray-300  rounded-2xl h-[12px] mt-3"></div>
-        <div className=" w-1/2 bg-gray-300 h-[12px] rounded-full mt-3"></div>
-        <div className="w-2/3 bg-gray-300 h-[12px] rounded-full mt-3"></div>
+      <div className=" w-full dark:bg-zinc-800 h-1/2 bg-gray-200 p-2">
+        <div className="w-4/5 dark:bg-zinc-700 bg-gray-300  rounded-2xl h-[12px] mt-3"></div>
+        <div className=" w-1/2 dark:bg-zinc-700 bg-gray-300 h-[12px] rounded-full mt-3"></div>
+        <div className="w-2/3 dark:bg-zinc-700 bg-gray-300 h-[12px] rounded-full mt-3"></div>
       </div>
     </div>
   );

@@ -302,35 +302,39 @@ function OrderPAge() {
     //   </div>
     // </>
 
-    <div className=" relative  mt-[60px] bg-white min-h-screen flex items-center flex-col">
+    <div className=" relative dark:bg-zinc-900  mt-[60px] bg-white min-h-screen flex items-center flex-col">
       {!isAuthenticated() && <Signupcomponent />}
-      <div className=" relative w-full h-[60px] flex items-center justify-center border-b-2 border-zinc-100 ">
+      <div className=" relative w-full h-[60px] flex items-center justify-center border-b-2  dark:border-zinc-800 border-zinc-100 ">
         <div
           onClick={() => navigate(-1)}
-          className=" absolute hover:bg-slate-100 h-[60px] w-[60px] top-0  left-0 flex items-center justify-center"
+          className=" absolute hover:bg-slate-100  h-[60px] w-[60px] top-0  left-0 flex items-center justify-center"
         >
-          <BsArrowLeft size={20} className=" font-bold " />
+          <BsArrowLeft size={20} className=" font-bold dark:text-white" />
         </div>
-        <h1 className=" text-3xl font-bold">Check Out Here</h1>
+        <h1 className="dark:text-white text-3xl font-bold">Check Out Here</h1>
       </div>
       <div className=" h-[500px]  items-center justify-center w-full flex flex-row ">
         <div className=" w-[500px] h-full  flex-col  flex ">
           <div className=" w-full h-[50px]flex flex-col items-center justify-center">
-            <p className=" font-bold text-white  text-lg">Cart Items </p>
+            <p className=" font-bold text-white   text-lg">Cart Items </p>
           </div>
           <div className=" w-full h-[400px] flex flex-col items-center overflow-y-auto ">
             {items.map((item) => {
               return (
-                <div className=" w-[400px] mt-2 h-[100px] items-center justify-center shadow-md bg-white flex flex-row shrink-0">
+                <div className=" w-[400px] mt-2 h-[100px] items-center justify-center shadow-md dark:bg-zinc-800 bg-white flex flex-row shrink-0">
                   <img src={product} className="h-[100px] w-[100px]" />
 
                   <div className=" flex-1 flex-col  items-center justify-center flex">
-                    <h1 className=" font-bold text-xl">{item.itemname} </h1>
-                    <p className="  text-sm font-bold">{item.price}Birr</p>
+                    <h1 className=" dark:text-white font-bold text-xl">
+                      {item.itemname}{" "}
+                    </h1>
+                    <p className=" dark:text-white text-sm font-bold">
+                      {item.price}Birr
+                    </p>
                   </div>
                   <div
                     onClick={() => handelRemove(item.id)}
-                    className="h-[50px] flex items-center  justify-center  cursor-pointer  w-[50px] "
+                    className="h-[50px] flex items-center  justify-center dark:text-white  cursor-pointer  w-[50px] "
                   >
                     <BsX />
                   </div>
@@ -340,37 +344,51 @@ function OrderPAge() {
           </div>
         </div>
         <div className=" w-1/2 h-full flex  flex-col items-center ">
-          <div className=" w-[500px]  items-center  h-full  bg-zinc-50 flex flex-col">
-            <h3 className=" font-bold text-lg">Fill payment detail</h3>
+          <div className=" w-[500px]  items-center  h-full  bg-zinc-50 dark:bg-zinc-800 flex flex-col">
+            <h3 className=" font-bold text-lg dark:text-white">
+              Fill payment detail
+            </h3>
             <div className=" h-1/2 w-full  ">
               <div className="h-[50px] mt-4 w-3/4 flex flex-row items-center justify-center">
-                <p className=" font-bold mx-2">FullName</p>
+                <p className=" font-bold mx-2 dark:text-white">FullName</p>
                 <div className=" h-[50px] w-3/4 mt-2">
-                  <Input value={data?.Firstname} background={"bg-zinc-100"} />
+                  <Input
+                    value={data?.Firstname}
+                    background={"bg-zinc-100 dark:bg-zinc-700"}
+                    placeholder={"John Doe"}
+                  />
                 </div>
               </div>
               <div className="h-[50px] mt-4 w-3/4 flex flex-row items-center justify-center">
-                <p className=" font-bold mx-2">Distnation</p>
+                <p className=" font-bold dark:text-white mx-2">Distnation</p>
                 <div className=" h-[50px] w-3/4 mt-2">
-                  <Input background={"bg-zinc-100"} />
+                  <Input
+                    background={"bg-zinc-100 dark:bg-zinc-700"}
+                    placeholder={"Bole, Addis Ababa Ethiopia"}
+                  />
                 </div>
               </div>
               <div className="h-[50px] mt-4 w-3/4 flex flex-row items-center justify-center">
-                <p className=" font-bold mx-2">Phone No</p>
+                <p className=" font-bold dark:text-white mx-2">Phone No</p>
                 <div className=" h-[50px] w-3/4 mt-2">
-                  <Input background={"bg-zinc-100"} />
+                  <Input
+                    background={"bg-zinc-100 dark:bg-zinc-700"}
+                    placeholder={"0912345678"}
+                  />
                 </div>
               </div>
               <div className="h-[50px] mt-2 w-3/4 flex flex-row items-center justify-center">
-                <p className=" font-bold mx-2">Totalprice</p>
+                <p className=" font-bold dark:text-white mx-2">Totalprice</p>
                 <div className=" items-center justify-center flex  h-[50px] w-3/4 mt-2">
-                  <p className=" font-bold">{totalprice}</p>
+                  <p className="dark:text-white font-bold">{totalprice}</p>
                 </div>
               </div>
             </div>
 
             <div className=" w-full h-[40px] mb-2 flex items-center justify-center ">
-              <p className=" font-bold text-lg">Choose Payment Option</p>
+              <p className=" font-bold dark:text-white text-lg">
+                Choose Payment Option
+              </p>
             </div>
             <div className="h-[50px] w-11/12 flex flex-row">
               <div
@@ -379,7 +397,7 @@ function OrderPAge() {
               >
                 <img
                   src={chapa}
-                  className={` bg-white rounded-md  shadow-md shadow-zinc-200 ${
+                  className={` bg-white rounded-md  dark:shadow-zinc-700 shadow-md shadow-zinc-200 ${
                     paymentmethod === "chapa" ? "border-2" : " border-0"
                   } border-blue-400  w-full h-full `}
                 />
@@ -390,14 +408,14 @@ function OrderPAge() {
               >
                 <img
                   src={telebirr}
-                  className={` cursor-pointer bg-white rounded-md  shadow-md shadow-zinc-200 ${
+                  className={` cursor-pointer bg-white rounded-md  shadow-md dark:shadow-zinc-700 shadow-zinc-200 ${
                     paymentmethod === "TeleBirr" ? "border-2" : " border-0"
                   } border-blue-400   w-full h-full `}
                 />
               </div>
               <div
                 onClick={() => setpaymentmethod("Bank")}
-                className={`  cursor-pointer w-1/3 h-full mx-2 bg-white rounded-md ${
+                className={`  cursor-pointer w-1/3 h-full mx-2 dark:bg-zinc-700 dark:text-white bg-white rounded-md ${
                   paymentmethod === "Bank" ? "border-2" : " border-0"
                 } border-blue-400  font-bold flex flex-col items-center justify-center`}
               >
@@ -413,7 +431,7 @@ function OrderPAge() {
                 />
               </div>
             )}
-            <div className=" h-[40px]  justify-self-end mt-4 w-[150px]  bg-black rounded-md ">
+            <div className=" h-[40px]  justify-self-end mt-4 w-[150px]   bg-zinc-900  rounded-md ">
               <Button name={"PAY"} />
             </div>
           </div>

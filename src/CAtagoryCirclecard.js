@@ -9,7 +9,9 @@ export default function CAtagoryCirclecard({ name, picture, id }) {
           <img src={picture} className="  max-h-full max-w-full  " />
         </div>
         <div className=" h-1/4 w-full flex items-center justify-center">
-          <p className=" text-sm font-bold text-zinc-800">{name}</p>
+          <p className=" text-sm font-bold dark:text-white text-zinc-800">
+            {name}
+          </p>
         </div>
       </div>
     </Link>

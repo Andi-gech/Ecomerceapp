@@ -32,15 +32,15 @@ function CatagorycardSlideshow({ data, isloading }) {
         onClick={clickprev}
         className={` flex  items-center ${
           current === 0 ? "bg-slate-400" : "active:bg-blue-200"
-        }    z-30 justify-center cursor-pointer transition-opacity opacity-0 group-hover:opacity-100 h-[60px] w-[60px]   bg-blue-100 rounded-full absolute border-4 border-white -left-[30px]`}
+        }    z-30 justify-center cursor-pointer dark:bg-blue-200 dark:bg-opacity-20 dark:border-blue-400   transition-opacity opacity-0 group-hover:opacity-100 h-[60px] w-[60px]   bg-blue-100 rounded-full absolute border-4 border-white -left-[30px]`}
       >
-        <FaAngleLeft size={10} />
+        <FaAngleLeft size={10} className=" dark:text-white" />
       </div>
       <div
         onClick={clicknext}
-        className=" h-[60px] w-[60px] flex z-30 active:bg-blue-200 transition-opacity opacity-0 group-hover:opacity-100 cursor-pointer items-center justify-center  bg-blue-100  rounded-full absolute border-4 border-white -right-[30px]"
+        className=" h-[60px] w-[60px] flex z-30 dark:bg-blue-200 dark:bg-opacity-20 dark:border-blue-400  transition-opacity opacity-0 group-hover:opacity-100 cursor-pointer items-center justify-center  bg-blue-100  rounded-full absolute border-4 border-white -right-[30px]"
       >
-        <FaAngleRight size={10} />
+        <FaAngleRight size={10} className=" dark:text-white" />
       </div>
 
       <div className=" w-[990px]  h-[220px]   overflow-hidden  ">

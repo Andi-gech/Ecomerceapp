@@ -3,7 +3,7 @@ import React from "react";
 function CatagoryCircleLoading(props) {
   return (
     <div className=" h-full w-full    animate-pulse cursor-pointer   group  flex flex-col items-center justify-center    ">
-      <div className=" h-[100px]  bg-gray-300 w-[100px] group-hover:border-2 border-blue-400   rounded-full overflow-hidden  flex items-center justify-center  ">
+      <div className=" h-[100px]  dark:bg-zinc-800 bg-gray-300 w-[100px] group-hover:border-2 border-blue-400   rounded-full overflow-hidden  flex items-center justify-center  ">
         <svg
           class="w-10 h-10 text-gray-200 dark:text-gray-600"
           aria-hidden="true"
@@ -15,8 +15,8 @@ function CatagoryCircleLoading(props) {
           <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
         </svg>
       </div>
-      <div className=" h-1/4 w-full flex items-center justify-center">
-        <p className=" text-sm font-bold h-[12px] rounded-full w-[100px] bg-gray-200 text-zinc-800"></p>
+      <div className="  h-1/4 w-full flex items-center justify-center">
+        <p className=" text-sm dark:bg-zinc-800 font-bold h-[12px] rounded-full w-[100px] bg-gray-200 text-zinc-800"></p>
       </div>
     </div>
   );

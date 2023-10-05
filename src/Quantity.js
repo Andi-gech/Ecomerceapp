@@ -8,18 +8,18 @@ function Quantity({ oncurrent }) {
   return (
     <div className="Quantity">
       <div
-        className=" h-[40px] w-[40px]  font-extrabold flex items-center justify-center rounded-md border-2 border-zinc-100"
+        className=" h-[40px] w-[40px] dark:bg-zinc-800 dark:text-white  font-extrabold flex items-center justify-center rounded-md border-2 border-zinc-100"
         onClick={() => {
           setcurrent(current !== 0 ? current - 1 : 0);
         }}
       >
         -
       </div>
-      <div className="h-[40px] w-[40px]  flex items-center justify-center font-bold">
+      <div className="h-[40px] w-[40px]  dark:text-white  flex items-center justify-center font-bold">
         {current}
       </div>
       <div
-        className=" h-[40px] w-[40px]  font-extrabold flex items-center justify-center rounded-md border-2 border-zinc-c"
+        className=" h-[40px] w-[40px] dark:bg-zinc-800 dark:text-white  font-extrabold flex items-center justify-center rounded-md border-2 border-zinc-c"
         onClick={() => setcurrent(current + 1)}
       >
         +
