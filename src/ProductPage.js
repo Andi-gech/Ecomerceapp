@@ -47,9 +47,9 @@ function Productpage() {
 
   return (
     <div className=" mt-[60px] bg-white dark:bg-zinc-900 min-h-screen flex items-center flex-col">
-      <div className=" h-[470px] mt-[50px] w-full flex flex-row">
-        <div className=" w-1/2  flex-col h-full  flex items-center justify-center ">
-          <div className=" w-2/3 h-2/3 rounded-md overflow-hidden">
+      <div className=" h-fit overflow-hidden items-center justify-center mt-[50px] w-full flex  sm:flex-row flex-col">
+        <div className="sm:w-1/2  w-full flex-col h-full  flex items-center  ">
+          <div className=" w-[300px] h-[300px] rounded-md overflow-hidden">
             {isLoading ? (
               <div className=" dark:bg-zinc-800 animate-pulse w-full items-center justify-center flex h-full bg-gray-300 rounded-md overflow-hidden">
                 <svg
@@ -143,7 +143,7 @@ function Productpage() {
             </div>
           </div>
         ) : (
-          <div className=" w-1/2 h-full flex flex-col items-center">
+          <div className=" sm:w-1/2  sm:h-full w-full  flex flex-col items-center">
             <div className=" w-full h-[100px]  items-center justify-center flex flex-col">
               <h1 className=" dark:text-white font-bold text-3xl">
                 {" "}
@@ -151,13 +151,13 @@ function Productpage() {
                 <span className=" text-blue-500">200Birr</span>)
               </h1>
             </div>
-            <div className=" w-4/5 h-[100px]  items-center justify-center flex flex-col">
+            <div className=" sm:w-4/5 w-full h-[100px]  items-center justify-center flex flex-col">
               <h1 className=" dark:text-white font-bold">
                 lorem ipsumm lorem lorem ipsumm lorem lorem ipsumm lorem lorem
                 ipsumm lorem lorem ipsumm lorem lorem ipsumm lorem lorem ipsumm
               </h1>
             </div>
-            <div className=" w-3/4 flex  ml-3 justify-self-start   items-center flex-row h-[50px]">
+            <div className=" sm:w-3/4 flex  sm:ml-3 justify-self-start   items-center flex-row h-[50px]">
               <p className="font-bold dark:text-white">Choose Color</p>
               <Colorcomponent
                 top={"red"}
@@ -192,7 +192,7 @@ function Productpage() {
                 activestatus={active === "brown" ? true : false}
               />
             </div>
-            <div className=" w-3/4 flex  ml-3  mt-3 items-center justify-self-start   flex-row h-[50px] ">
+            <div className=" sm:w-3/4 flex  sm:ml-3  mt-3 items-center justify-self-start   flex-row h-[50px] ">
               <p className="dark:text-white font-bold">Choose Size</p>
               <SizeComponent
                 size={"S"}
