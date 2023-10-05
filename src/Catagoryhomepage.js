@@ -127,7 +127,7 @@ function Catagoryhomepage() {
             <>
               {data?.map((item) => {
                 return (
-                  <div className=" w-[150px] h-[150px] sm:mx-8">
+                  <div className=" w-[150px] h-[150px] mx-2 sm:mx-8">
                     <CAtagoryCirclecard
                       name={item.name}
                       id={item.id}
