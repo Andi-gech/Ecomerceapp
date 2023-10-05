@@ -14,7 +14,7 @@ export default function SlideShow({ isloading }) {
     const prevPage = (current - 1 + 4) % 4; // Assuming you have 4 slides
     setCurrent(prevPage);
   };
-  if (true) {
+  if (isloading) {
     return (
       <div className="relative animate-pulse h-[250px] dark:bg-zinc-800 justify-between flex-row rounded-3xl w-9/12 flex items-center  bg-gray-200">
         <div className=" w-1/2 h-full flex items-center flex-col justify-center  rounded-md ">
