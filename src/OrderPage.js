@@ -302,7 +302,7 @@ function OrderPAge() {
     //   </div>
     // </>
 
-    <div className=" relative w-full dark:bg-zinc-900  mt-[60px] bg-white min-h-screen flex items-center flex-col">
+    <div className=" relative w-full overflow-hidden dark:bg-zinc-900  mt-[60px] bg-white min-h-screen flex items-center flex-col">
       {!isAuthenticated() && <Signupcomponent />}
       <div className=" relative w-full h-[60px] flex items-center justify-center border-b-2  dark:border-zinc-800 border-zinc-100 ">
         <div
@@ -313,7 +313,7 @@ function OrderPAge() {
         </div>
         <h1 className="dark:text-white text-3xl font-bold">Check Out Here</h1>
       </div>
-      <div className=" h-[500px]  items-center justify-center w-full flex flex-row ">
+      <div className=" h-[500px]  items-center justify-center w-full flex sm:flex-row flex-col ">
         <div className=" w-[500px] h-full  flex-col  flex ">
           <div className=" w-full h-[50px]flex flex-col items-center justify-center">
             <p className=" font-bold text-white   text-lg">Cart Items </p>

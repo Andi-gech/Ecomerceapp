@@ -323,7 +323,7 @@ function Navbar() {
     //   </div>
     // </>4
 
-    <div className="  z-50 h-[60px] fixed   w-full flex p-2 bg-white dark:bg-zinc-800">
+    <div className="  z-50 h-[60px] fixed   w-screen flex p-2 bg-white dark:bg-zinc-800">
       <div className=" flex-1   justify-between flex flex-row items-center">
         <div className="  w-1/2  h-full flex flex-row items-center ">
           <div
