@@ -26,6 +26,13 @@ function CatagorycardSlideshow({ data, isloading }) {
       </div>
     );
   }
+  if (data?.length === 0) {
+    return (
+      <div className=" h-[120px] w-full  items-center flex justify-center">
+        <p className=" font-bold   text-lg dark:text-white">no Product data</p>
+      </div>
+    );
+  }
   return (
     <div className="mt-9 relative group flex items-center justify-center w-full  h-[220px]">
       <div
