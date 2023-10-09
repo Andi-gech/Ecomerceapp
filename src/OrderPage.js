@@ -19,7 +19,10 @@ import product from "./assets/s.jpg";
 import { BsArrowBarLeft, BsArrowLeft, BsX } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { removeItem } from "./CartReducer";
+import { clearCart, removeItem } from "./CartReducer";
+import UsePostOrderhook from "./UsePostOrder";
+import UsePostOrderItemhook from "./UsePostOrderItem";
+import { TailSpin } from "react-loader-spinner";
 
 function OrderPAge() {
   const isAuthenticated = useIsAuthenticated();
@@ -29,6 +32,8 @@ function OrderPAge() {
   const [orderconfrimno, setorderconfirmno] = useState();
   const [copy, setcopied] = useState(false);
   const [location, setlocation] = useState("");
+  const [Errors, seterror] = useState();
+
   const [paymentmethod, setpaymentmethod] = useState("chapa");
 
   useEffect(() => {
@@ -66,244 +71,95 @@ function OrderPAge() {
       setsignup(true);
     }
   };
-
-  const { data, isError, error, isLoading, refech } = useCustomerhook();
   const authHeader = useAuthHeader();
   const dispatch = useDispatch();
   const handelRemove = (id) => {
     dispatch(removeItem({ id }));
   };
 
+  const { data, isError, error, isLoading, refech } = useCustomerhook();
+  const { mutate: Postmutate, isLoading: orderloading } =
+    UsePostOrderItemhook(orderconfrimno);
+
+  const {
+    isSuccess,
+    data: postdata,
+    isLoading: ispostloadind,
+
+    mutate,
+  } = UsePostOrderhook();
   const ordernow = () => {
-    axios.defaults.headers.common["Authorization"] = authHeader();
+    if (items.length === 0) {
+      return seterror("Please add item to cart");
+    }
+    const totalItems = items.length;
+    const postItemPromises = [];
 
-    axios
-      .post(
-        `${baseUrl}/order/`,
-        {
-          location: location,
-        },
-        {
-          headers: { Authorization: authHeader() },
-        }
-      )
-      .then(function (response) {
-        setorderconfirm(true);
-        setorderconfirmno(response.data.orderuniqueId);
+    mutate(
+      {
+        location: location,
+      },
+      {
+        onSuccess: (data) => {
+          console.log("Mutation successful!", data);
+          setorderconfirmno(data?.data.orderuniqueId);
 
-        items.forEach((item) => {
-          const data = {
-            product: item.id,
-            quantity: item.quantity,
-          };
+          items.forEach((item, index) => {
+            const postData = {
+              product: item.id,
+              quantity: item.quantity,
+            };
 
-          const orderUniqueId = response.data.orderuniqueId;
+            console.log(index);
 
-          axios
-            .post(`${baseUrl}/order/${orderUniqueId}/orderitems/`, data)
-            .then((response) => {})
+            const postPromise = Postmutate(postData);
+            postItemPromises.push(postPromise);
+          });
+
+          Promise.all(postItemPromises)
+            .then(() => {
+              setorderconfirm(true);
+              dispatch(clearCart());
+            })
             .catch((error) => {
-              console.error(error);
+              console.error("Error submitting items:", seterror(error));
             });
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
-    localStorage.removeItem("myCart");
-    window.dispatchEvent(new Event("storage"));
+        },
+      }
+    );
   };
 
   let navigate = useNavigate();
   console.log(isAuthenticated(), "isAuthenticated");
   var islogin = isAuthenticated();
+  if (ispostloadind || orderloading) {
+    return (
+      <div className="relative w-full justify-center overflow-hidden dark:bg-zinc-900  mt-[60px] bg-white min-h-screen flex items-center flex-col">
+        <TailSpin size={30} />
+      </div>
+    );
+  }
 
   return (
-    // <>
-    //
-    //   <div
-    //     className="OrderPage"
-    //     style={{ filter: signup ? "blur(2px)" : "none" }}
-    //   >
-    //     {orderconfrim && (
-    //       <div className="orderboxes">
-    //         <div className="Orderconfirmbox">
-    //           <p>Your Cofirmation No </p>
-    //           <p
-    //             id="orderconfno"
-    //             style={{ backgroundColor: "rgb(240, 239, 239)" }}
-    //             onClick={() => {
-    //               if (
-    //                 "clipboard" in navigator &&
-    //                 "writeText" in navigator.clipboard
-    //               ) {
-    //                 navigator.clipboard.writeText(orderconfrimno);
-    //                 setcopied(true);
-    //               }
-    //             }}
-    //           >
-    //             {orderconfrimno}
-    //           </p>
-    //           {copy && (
-    //             <p style={{ marginTop: -10, color: "gray" }}>Copied</p>
-    //           )}
-    //           {!copy && (
-    //             <p style={{ marginTop: -10, color: "gray" }}>click to copy</p>
-    //           )}
-
-    //           <button
-    //             onClick={() => {
-    //               setorderconfirm(!orderconfrim);
-    //               setcopied(false);
-    //             }}
-    //           >
-    //             Ok
-    //           </button>
-    //         </div>
-    //       </div>
-    //     )}{" "}
-    //     <div className="leftsideOrderinfo">
-    //       <div className="inputboxs">
-    //         <p id="userInfo">Userinfo</p>
-    //         <div className="eachinfo">
-    //           {" "}
-    //           <p>Name</p>{" "}
-    //           <input
-    //             style={{
-    //               backgroundColor: "rgb(218, 212, 212)",
-    //               fontWeight: "bold",
-    //               color: "black",
-    //             }}
-    //             disabled
-    //             placeholder={data?.name}
-    //           />
-    //         </div>
-    //         <div className="eachinfo">
-    //           {" "}
-    //           <p>P.no</p>{" "}
-    //           <input
-    //             style={{
-    //               backgroundColor: "rgb(218, 212, 212)",
-    //               fontWeight: "bold",
-    //               color: "black",
-    //             }}
-    //             disabled
-    //             placeholder={data?.Phone_no}
-    //           />
-    //         </div>
-    //       </div>
-    //       <div className="inputboxs">
-    //         <p id="userInfo">
-    //           Delivery
-    //           <FaMotorcycle color="gray" />
-    //         </p>
-    //         <div className="eachinfo">
-    //           {" "}
-    //           <p>Location</p>{" "}
-    //           <input
-    //             style={{
-    //               backgroundColor: "rgb(218, 212, 212)",
-    //               fontWeight: "bold",
-    //               color: "black",
-    //             }}
-    //             placeholder={userdata.name}
-    //             onChange={(e) => setlocation(e.target.value)}
-    //           />
-    //         </div>
-    //       </div>
-    //       <div className="inputboxs" style={{ alignItems: "flex-start" }}>
-    //         <p id="userInfo">Payment method</p>
-    //         <div
-    //           className="eachbankinfo"
-    //           style={{ border: "1px solid black" }}
-    //         >
-    //           <img src={productpic} width={20} height={20} />{" "}
-    //           <p>Abysiniabank</p>{" "}
-    //         </div>
-    //         <p style={{ backgroundColor: "gray", color: "white" }}>
-    //           AndualemGetachew-100028384758
-    //         </p>
-    //         <div
-    //           className="eachbankinfo"
-    //           style={{ border: "1px solid black" }}
-    //         >
-    //           <img src={cbe} width={20} height={20} />{" "}
-    //           <p>Commercialbank of Ethiopia</p>{" "}
-    //         </div>
-    //         <p style={{ backgroundColor: "gray", color: "white" }}>
-    //           AndualemGetachew-100028384758
-    //         </p>
-    //       </div>
-    //       <div className="inputboxs">
-    //         <p id="userInfo">Send screen shot</p>
-    //         <div className="eachinfo">
-    //           {" "}
-    //           <input type={"file"} />
-    //         </div>
-    //         <ButtonsTransparent
-    //           onclick={ordernow}
-    //           width={100}
-    //           name={"Submit"}
-    //         />
-    //       </div>
-    //     </div>
-    //     <div className="RightSideOrderinfo">
-    //       {" "}
-    //       <div
-    //         className="cartItemproduct"
-    //         style={{ maxHeight: 750, boxShadow: "none" }}
-    //       >
-    //         <div
-    //           className="eachcartitems"
-    //           style={{
-    //             backgroundColor: "rgb(234, 235, 235)",
-    //             fontWeight: "bold",
-    //           }}
-    //         >
-    //           <div className="itemscolomeun">
-    //             <p>Item Name</p>
-    //           </div>
-    //           <div className="item">quantity</div>
-    //           <div className="item">Price</div>
-    //           <div className="item"></div>
-    //         </div>
-    //         {items?.map((item, index) => (
-    //           <div key={index} className="eachcartitems">
-    //             <div className="itemscolomeun">
-    //               <p>{item.itemname}</p>
-    //             </div>
-    //             <div className="item">{item.quantity}</div>
-    //             <div className="item">{item.price}</div>
-    //             <div
-    //               className="item"
-    //               style={{ color: "red", fontWeight: "bold" }}
-    //               onClick={() => handelRemove(item.itemname)}
-    //             >
-    //               X
-    //             </div>
-    //           </div>
-    //         ))}
-    //         <div
-    //           className="eachcartitems"
-    //           id="totalprice"
-    //           style={{ alignSelf: "flex-end", marginRight: 17 }}
-    //         >
-    //           <div className="item">
-    //             <p>{totalprice} birr</p>
-    //           </div>
-    //         </div>
-    //         <div
-    //           className="eachcartitems"
-    //           style={{ alignSelf: "flex-end", marginRight: 17 }}
-    //         ></div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </>
-
     <div className=" relative w-full overflow-hidden dark:bg-zinc-900  mt-[60px] bg-white min-h-screen flex items-center flex-col">
       {!isAuthenticated() && <Signupcomponent />}
+      {orderconfrim && (
+        <div className=" absolute z-40 w-[300px] flex-col h-[300px] dark:bg-zinc-800  bg-white flex items-center justify-center  ">
+          <p className=" font-bold  dark:text-white">Your Order is confirmed</p>
+          <p className=" font-bold dark:text-white">
+            Order No : {orderconfrimno}
+          </p>
+          <p className=" font-bold dark:text-white">Please wait for our call</p>
+          <div className=" absolute h-[40px] w-[40px] top-0 right-0">
+            <BsX
+              onClick={() => setorderconfirm(false)}
+              size={30}
+              className=" cursor-pointer dark:text-white font-bold  "
+            />
+          </div>
+        </div>
+      )}
+
       <div className=" relative w-full h-[60px] flex items-center justify-center border-b-2  dark:border-zinc-800 border-zinc-100 ">
         <div
           onClick={() => navigate(-1)}
@@ -319,6 +175,11 @@ function OrderPAge() {
             <p className=" font-bold text-white   text-lg">Cart Items </p>
           </div>
           <div className=" w-full h-[400px]  flex flex-col items-center overflow-y-auto ">
+            {Errors && (
+              <p className="  fixed  bg-red-200  text-black font-bold">
+                {Errors}
+              </p>
+            )}
             {items.map((item) => {
               return (
                 <div className=" w-[400px] mt-2 h-[100px] items-center justify-center shadow-md dark:bg-zinc-800 bg-white flex flex-row shrink-0">
@@ -329,7 +190,7 @@ function OrderPAge() {
                       {item.itemname}{" "}
                     </h1>
                     <p className=" dark:text-white text-sm font-bold">
-                      {item.price}Birr
+                      {item.id}Birr
                     </p>
                   </div>
                   <div
@@ -365,6 +226,7 @@ function OrderPAge() {
                   <Input
                     background={"bg-zinc-100 dark:bg-zinc-700"}
                     placeholder={"Bole, Addis Ababa Ethiopia"}
+                    ontextchange={(e) => setlocation(e.target.value)}
                   />
                 </div>
               </div>
@@ -432,7 +294,7 @@ function OrderPAge() {
               </div>
             )}
             <div className=" h-[40px]  justify-self-end mt-4 w-[150px]   bg-zinc-900  rounded-md ">
-              <Button name={"PAY"} />
+              <Button onpress={ordernow} name={"PAY"} />
             </div>
           </div>
         </div>

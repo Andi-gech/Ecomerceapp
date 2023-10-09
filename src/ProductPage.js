@@ -31,7 +31,12 @@ function Productpage() {
   const dispatch = useDispatch();
   const HandleAddtocart = (event) => {
     dispatch(
-      addItem({ itemname: data?.name, quantity: 1, price: data?.price })
+      addItem({
+        id: data?.id,
+        itemname: data?.name,
+        quantity: 1,
+        price: data?.price,
+      })
     );
   };
 
